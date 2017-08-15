@@ -1,0 +1,332 @@
+%\documentclass[10pt, oneside, openany]{book}
+\RequirePackage{ifpdf}
+\ifpdf
+	\documentclass[twoside, justified, notoc, nobib, 
+	%openany, 
+	nohyper]{tufte-book}
+\else
+	\documentclass[twoside, justified, notoc, nobib, 
+	%openany, 
+	nols,nohyper]{tufte-book}
+  % PSTricks run
+  \usepackage{pstricks}
+  \usepackage{pstricks-add}
+\fi
+%\usepackage{auto-pst-pdf}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Book metadata
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Neural bases of variable binding in symbolic representations}
+\author{Mart\'in P\'erez-Guevara}
+\publisher{Unicog lab}
+
+%\usepackage{sidenotes}
+\usepackage[orig,french]{isodate}
+\usepackage{amsmath,amssymb,amsfonts,amsbsy,amsthm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{float}
+\usepackage[USenglish]{babel} % English language/hyphenation
+
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{minitoc}
+\usepackage{framed}
+\usepackage{upgreek}
+\usepackage[absolute]{textpos}
+\usepackage{comment}
+\usepackage{fancyvrb}
+\usepackage{rotating}
+\usepackage{calc}
+\usepackage{tikz} % Required for drawing custom shapes
+\usepackage{graphicx} % Required for including pictures
+\usepackage{xcolor, color, colortbl} % Required for specifying colors by name
+\usepackage{setspace}
+\usepackage{mdframed}
+\usepackage{bookmark}
+\usepackage{flafter}
+
+
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{url}
+
+\setcitestyle{square,numbers}
+%\setcitestyle{authoryear}
+
+
+\input{myDef.tex} 
+\input{structure.tex}
+
+\newcommand{\myspace}{0.03}
+\newcommand{\myspacetwo}{0.025}
+
+\hyphenpenalty=10000
+\tolerance=2000
+\emergencystretch=10pt
+
+
+\setcounter{secnumdepth}{1}
+%\let\cleardoublepage\clearpage
+
+\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{proof}{Proof}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\begin{titlepage}
+
+\begin{textblock}{5}(2.,0.8)
+\begin{figure}
+\includegraphics[width=\linewidth]{figures/title/LogoParisDescartes.png}
+\end{figure}
+\end{textblock}
+
+\begin{textblock}{2.4}(12,0.8)
+\begin{figure}
+\includegraphics[width=\linewidth]{figures/title/Membre-USPC-Gris_06-09-2016.png}
+\end{figure}
+\end{textblock}
+
+
+\begin{fullwidth}
+ ~\\[1cm]
+
+\begin{center}
+\vspace*{1.00cm}
+UNIVERSITÉ PARIS DESCARTES \\
+\vspace*{0.25cm}
+\textbf{École doctorale N° 158 (ED3C) Cerveau-Cognition-Comportement}\\
+\vspace*{0,25cm}
+\textit{Neurospin / Unicog U-992 / Équipe de neuroimagerie linguistique}\\
+\vspace*{2cm}
+\LARGE{\textbf{Bases neuronales de liaison variable dans des représentations symboliques}}\\
+\vspace*{0,5cm}
+\large{\textit{\textbf{Exploration expérimentale et de modélisation}}}\\
+\vspace*{0.5cm}
+\large{\textbf{Par Mart\'in P\'erez-Guevara}}\\
+\vspace*{0.5cm}
+Spécialité de doctorat : Neurosciences cognitives et informatiques\\
+\vspace*{0.5cm}
+Dirigée par Christophe Pallier\\
+\vspace*{0.5cm}
+\small{Présentée et soutenue publiquement le 24 Novembre 2017}\\
+\end{center}
+
+\vspace*{1cm}
+\begin{footnotesize}
+Devant un jury composé de : \\[0.25cm]
+\begin{tabular}{lll}
+Dr. Xavier ALARIO & Rapporteur & Directeur de recherche,\\ & & Universite Centre Saint-Charles. Marseille, France.\\
+Dr. Sander BOHTE & Rapporteur & Chargé de recherche,\\ & &  CWI. Amsterdam, The Netherlands.\\
+Dr. Emmanuel DUPOUX & Examinateur & Directeur de recherche,\\ & &  École des Hautes Etudes en Sciences Sociales. Paris, France.\\
+Dr. Marc DE KAMPS & Examinateur, Président du jury & Professeur,\\ & & University of Leeds.\\
+Dr. Christophe PALLIER & Directeur de thèse & Directeur de recherche\\& & INSERM/CEA/SAC/DSV/DRM/Neurospin center. Saclay, France.\\
+\end{tabular}
+\end{footnotesize}
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics{figures/title/creativecommons}
+\end{center}
+\end{figure}
+
+\end{fullwidth}
+\end{titlepage}
+
+\clearpage\null\newpage
+
+
+\thispagestyle{plain}
+\begin{textblock}{5}(2.,0.8)
+\begin{figure}
+\includegraphics[width=\linewidth]{figures/title/LogoParisDescartes.png}
+\end{figure}
+\end{textblock}
+
+\begin{textblock}{2.4}(12,0.8)
+\begin{figure}
+\includegraphics[width=\linewidth]{figures/title/Membre-USPC-Gris_06-09-2016.png}
+\end{figure}
+\end{textblock}
+
+
+\begin{fullwidth}
+    ~\\[1cm]
+\begin{center}
+\vspace*{1.00cm}
+UNIVERSITY OF PARIS DESCARTES \\
+\vspace*{0.25cm}
+\textbf{Doctoral School N° 158 (ED3C) Brain-Cognition-Behavior}\\
+\vspace*{0,25cm}
+\textit{Neurospin / Unicog U-992 / Language neuroimaging team}\\
+\vspace*{2cm}
+\LARGE{\textbf{Neural bases of variable binding in symbolic representations}}\\
+\vspace*{0,5cm}
+\large{\textit{\textbf{Experimental and modelling exploration}}}\\
+\vspace*{0.5cm}
+\large{\textbf{By Mart\'in P\'erez-Guevara}}\\
+\vspace*{0.5cm}
+PhD Specialty : Cognitive and Computational Neuroscience\\
+\vspace*{0.5cm}
+Directed by Christophe Pallier\\
+\vspace*{0.5cm}
+\small{Presented and defended publicly the 24th of November 2017}\\
+\end{center}
+
+\vspace*{1cm}
+\begin{footnotesize}
+Jury composition : \\[0.25cm]
+\begin{tabular}{lll}
+Dr. Xavier ALARIO & Reviewer & Research Director,\\ & & Universite Centre Saint-Charles. Marseille, France.\\
+Dr. Sander BOHTE & Reviewer & Research Associate,\\ & &  CWI. Amsterdam, The Netherlands.\\
+Dr. Emmanuel DUPOUX & Examiner & Research Director,\\ & &  École des Hautes Etudes en Sciences Sociales. Paris, France.\\
+Dr. Marc DE KAMPS & Examiner, Jury President & Professor,\\ & & University of Leeds.\\
+Dr. Christophe PALLIER & Doctoral advisor & Research Director\\& & INSERM/CEA/SAC/DSV/DRM/Neurospin center. Saclay, France.\\
+\end{tabular}
+\end{footnotesize}
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics{figures/title/creativecommons}
+\end{center}
+\end{figure}
+
+
+\end{fullwidth}%
+\clearpage\null\newpage
+
+
+%\begin{fullwidth}
+%\input{acknowledgements}
+%\end{fullwidth}
+%\clearpage\null\newpage
+
+%\clearpage
+%\begin{fullwidth}
+%\input{abstract.tex}
+%\end{fullwidth}
+
+%\clearpage\null\newpage
+%\begin{fullwidth}
+%\input{summary_french}
+%\end{fullwidth}
+
+%\clearpage\null\newpage
+%\begin{fullwidth}
+%\input{summary_english}
+%\end{fullwidth}
+
+\cleardoublepage
+
+\begin{fullwidth}
+\tableofcontents
+\end{fullwidth}
+
+\begin{fullwidth}
+\listoffigures
+\end{fullwidth}
+
+\begin{fullwidth}
+\listoftables
+\end{fullwidth}
+
+% Add here mathematical notations and abbreviations
+%\input{abbreviations.tex}
+%\input{notations.tex}
+\clearpage\null\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+%\input{introduction.tex}
+\cleardoublepage
+
+
+\part{The variable binding problem in the neuroscience of language}
+\cleardoublepage
+% Introducing the binding problem in all generality and the variable binding problem in specific.
+%\input{part_I/chapter_1.tex}
+\FloatBarrier
+% Neuroimaging explorations of variable binding. fMRI and ECoG techniques.
+%\input{part_I/chapter_2.tex}
+\FloatBarrier
+% Neural Modelling of variable binding. Tensor framework vs NBA. ANN vs SNN.
+%\input{part_I/chapter_3.tex}
+\FloatBarrier
+
+
+\part{Contribution -- Testing the superposition principle in two-syllable and two-digit representations}
+\cleardoublepage
+% Introduction to superposition principle and application to fMRI
+%\input{part_II/chapter_1.tex}
+%\FloatBarrier
+% Experimental design on both syllables and digits
+% \input{part_II/chapter_2.tex}
+%\FloatBarrier
+% Results and discussion on syllables
+\input{part_II/chapter_3.tex}
+\FloatBarrier
+% Results and discussion on numbers
+% \input{part_II/chapter_4.tex}
+%\FloatBarrier
+
+
+\part{Contribution -- Modelling NBA}
+\cleardoublepage
+% Introduction
+% \input{part_III/chapter_1.tex}
+%\FloatBarrier
+% Methods
+% \input{part_III/chapter_2.tex}
+%\FloatBarrier
+% Results
+% \input{part_III/chapter_3.tex}
+%\FloatBarrier
+% Discussion
+% \input{part_III/chapter_4.tex}
+%\FloatBarrier
+
+
+\part{Contribution -- Exploring the neural temporal signatures of word binding}
+\cleardoublepage
+% Introduction
+% \input{part_IV/chapter_1.tex}
+%\FloatBarrier
+% Methods
+% \input{part_IV/chapter_2.tex}
+%\FloatBarrier
+% Results
+% \input{part_IV/chapter_3.tex}
+%\FloatBarrier
+% Discussion
+% \input{part_IV/chapter_4.tex}
+%\FloatBarrier
+
+
+\part{Global discussion and conclusion}
+\cleardoublepage
+%\input{part_V/global_discussion.tex}
+%\FloatBarrier
+%\input{part_V/conclusions.tex}
+%\FloatBarrier
+\cleardoublepage
+
+
+\backmatter 
+\bibliographystyle{abbrvnat}
+\bibliography{biblio}
+
+\clearpage
+%\begin{fullwidth}
+%\input{abstract.tex}
+%\end{fullwidth}
+
+
+\end{document}

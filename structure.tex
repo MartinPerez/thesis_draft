@@ -1,0 +1,179 @@
+%----------------------------------------------------------------------------------------
+%	VARIOUS REQUIRED PACKAGES AND CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+% The following package makes prettier tables.  We're all about the 
+%bling!
+\usepackage{booktabs} % Required for nicer horizontal rules in tables
+\usepackage[inline]{enumitem}
+\usepackage{units}
+\usepackage{xcolor, color, colortbl} % Required for specifying colors 
+%by name
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for 
+%highlighting throughout the book
+\definecolor{Gray}{gray}{0.92}
+\definecolor{ups}{rgb}{0.39,0.,0.23}
+\definecolor{thesis}{rgb}{0.39,0.,0.23}
+
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}   
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Citation environment at the beginning of chapters
+\definecolor{shadecolor}{RGB}{211, 211, 211}
+% Environment for the abstract
+\newenvironment{chabstract}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{thesis}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{white}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+\newenvironment{chtakehome}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{gray}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{white}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+
+%-------------------------------------------------------------------------------
+%	FONTS
+%-------------------------------------------------------------------------------
+\usepackage{avant} % Use the Avantgarde font for headings
+\usepackage{libertine} % Note: this package is important because we use 
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\usepackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+
+%----------------------------------------------------------------------------------------
+%	MAIN TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Table of contents
+%-------------------------------------------------------------------------------
+\usepackage{titletoc} % Required for manipulating the table of contents
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}
+
+\contentsmargin{0cm} % Removes the default margin
+
+% Part text styling
+\titlecontents{part}[0cm]
+{\addvspace{20pt}\centering\large\bfseries}
+{}
+{}
+{}
+
+% Section text styling
+\titlecontents{section}[1.25cm] % Indentation
+{\addvspace{3pt}\sffamily\bfseries} % Spacing and font options for sections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Section number
+{}
+{\hfill\color{black}\thecontentspage} % Page number
+[]
+
+% Subsection text styling
+\titlecontents{subsection}[1.25cm] % Indentation
+{\addvspace{1pt}\sffamily\small} % Spacing and font options for subsections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[]
+
+
+%-------------------------------------------------------------------------------
+% Chapter style
+%-------------------------------------------------------------------------------
+\usepackage{sectsty}
+\titleformat{\chapter}%
+  {\huge\sffamily\color{thesis}}% format applied to label+text
+  {\llap{\colorbox{thesis}{\parbox{1.5cm}{\hfill\huge\color{white}\thechapter}}}}%
+  % label
+  {2pt}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+\allsectionsfont{\color{thesis} \sffamily}
+%\renewcommand\thesection{\arabic{section}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+
+%----------------------------------------------------------------------------------------
+%	MINI TABLE OF CONTENTS IN PART HEADS
+%----------------------------------------------------------------------------------------
+\titlecontents{part}[0em] % Indenting
+{\addvspace{15pt}\color{thesis}\LARGE\sffamily} % Spacing and font options for 
+%chapters
+{\color{thesis}\contentslabel[\LARGE\thecontentslabel]{1cm}\color{thesis}} % 
+%Chapter number
+{}  
+{}
+% Page number
+
+% Chapter text styling
+\titlecontents{chapter}[3em] % Indenting
+{\addvspace{15pt}\LARGE\sffamily} % Spacing and font options for 
+%chapters
+{\color{thesis}\contentslabel[\LARGE\thecontentslabel]{1cm}\color{thesis}} % 
+%Chapter number
+{}  
+{\color{thesis}\normalsize\sffamily\;\hfill\;\thecontentspage}
+% Page number
+
+% Section text styling
+\titlecontents{section}[6em] % Indenting
+{\sffamily\Large} % Spacing and font options for sections
+{\contentslabel[\thecontentslabel]{1cm}} % Section number
+{}
+{\color{black}\normalsize\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage}
+
+% Subsection text styling
+\titlecontents{subsection}[.5em] % Indentation
+{\normalfont\footnotesize\sffamily} % Font settings
+{}
+{}
+{}
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS IN THE DOCUMENTS
+%----------------------------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor=
+ blue,bookmarks=true,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+\usepackage{bookmark}
+\bookmarksetup{
+open,
+numbered,
+addtohook={%
+\ifnum\bookmarkget{level}=0 % chapter
+\bookmarksetup{bold}%
+\fi
+\ifnum\bookmarkget{level}=-1 % part
+\bookmarksetup{color=blue,bold}%
+\fi
+}
+}
+
+% Prints a trailing space in a smart way.
+\usepackage{xspace}
+% Full page-width caoption
+\newcommand{\fullcaption}[1]{
+    \refstepcounter{figure}%
+    \noindent\justify Figure \thefigure:\xspace%
+    #1
+}
