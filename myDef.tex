@@ -165,3 +165,10 @@
 \DeclareMathOperator{\GP}{GP}
 \DeclareMathOperator{\PK}{PK}
 \DeclareMathOperator{\DP}{DP}
+
+
+\let\svthefootnote\thefootnote
+\newcommand\blankfootnote[1]{%
+  \let\thefootnote\relax\footnotetext{#1}%
+  \let\thefootnote\svthefootnote%
+  }
