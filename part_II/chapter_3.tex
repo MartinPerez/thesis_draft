@@ -1,20 +1,21 @@
 \begin{fullwidth}
 \chapter{\label{ch:super_syllables}
-Experimental results and discussion}
+Experimental results}
 \end{fullwidth}
 
 \begin{chabstract}
 
-In this chapter we report subjects behavioral performance and the sensory and language related networks obtained for classification of syllabic representations. We present the results of the different classification models and demonstrate that there is evidence for superposed representations in several regions of the language network. Finally we link regions supporting superposition with morphological effects demonstrated in previous bold-fMRI experiments.
+In this chapter we report subjects behavioral performance ...
 
 \end{chabstract}
 
 
 \section{Behavioral performance}
 %
-The subjects had an almost perfect behavioral performance in both visual and auditory \emph{Syllable tasks}, except for \emph{Subject 05} that reported concentration span issues over all the acquisition.
+The subjects had a behavioral performance above 97\% in both visual and auditory \emph{Pseudoword matching tasks}, except for \emph{Subject 05} that reported concentration span issues over all the acquisition.
 Note that due to the experimental design structure, in which we only query few random samples, small score decrements can imply distraction over an important task segment.
-So we consider all subjects data apt to neuroimaging interpretation, with small caution over \emph{Subject 05}. Behavioral performance details are provided in Table \ref{table:behavior}.
+\emph{Subjects 01 and 04} reported in the second auditory session that the volume was not high enough to be comfortable, although this did not reflect on their behavioral performance.
+So we consider all subjects data apt to neuroimaging interpretation, with caution over \emph{Subject 05}. Behavioral performance details are provided in Table \ref{table:behavior}.
 
 
 \begin{table}
@@ -29,33 +30,22 @@ Subject &  Visual (\%) &  Auditory (\%) &  Overall (\%) \\
 05 &        92.36 &          88.89 &    90.62 \\
 \bottomrule
 \end{tabular}
-\caption{\textbf{Behavioral performance on \emph{Syllable task}:} Performance correspond to correct answers to the same or different query, where no answer is considered as incorrect. Visual and Auditory headers refer to the sensory modality of the task, where overall is the mean performance of both modalities.}
+\caption{\textbf{Behavioral performance on \emph{Pseudoword matching task}:} Performance correspond to correct answers to the same or different query, where no answer is considered as incorrect. Visual and Auditory headers refer to the sensory modality of the task, where overall is the mean performance of both modalities.}
 \label{table:behavior}
 \end{table}
 
 
-\section{Subject networks}\label{sec:subject_networks}
-%
-\paragraph{Sensory-Motor regions:}
-In Figure \ref{fig:sensory_example_img} we portray an example of the contours of primary sensory-motor regions, taken from the cytoarchitectonic SPM toolbox\citep{eickhoff2005new}, projected on the anatomy of Subject 1 alongside the gray matter mask.
-Notice that the primary regions are broad, since we considered any voxel with non zero probability as part of the region, and cover both hemispheres.
+\section{Sanity checks}\label{sec:sanity_checks}
+
+\paragraph{Language localizer activations:}
+The contours of the language localizers' contrasts, thresholded at p-value < 0.001, for both auditory and visual modalities are presented in Figure \ref{fig:language_localizers} for all subjects.
 
 
-\begin{figure}[hptb]
-\centering
-\includegraphics[width=1.0 \linewidth]{figures/part_II/sensory_example_img_with_legend.pdf}
-\caption{\textbf{Sensory-motor regions on \emph{Subject 1} anatomy:}
-Contours are shown for the projected primary Visual, Auditory and Motor regions, alongside the subject extracted gray matter.
-}
-\label{fig:sensory_example_img}
-\end{figure}
-
-
-\paragraph{Language localizers:}
-The contours of the language localizers' contrasts, thresholded at p-value < 0.0001, for both auditory and visual modalities are presented in Figure \ref{fig:language_localizers} for all subjects.
 We appreciate a variability between the modalities, that particularly disfavors activations of the visual one, in which the subjects can get distracted from perceiving and processing the stimuli more easily, than in the auditory case.
 This could also be expected from the intrinsic variability of different experimental designs in language localizers as demonstrated by Mahowald et al. \citep{mahowald2016reliable}.
 Nonetheless, there is good spatial agreement between the activation regions of visual and auditory modalities, portraying a left lateralized network that covers the fronto-temporal language system that has been well depicted in previous imaging studies\citep{mahowald2016reliable, fedorenko2010new, dehaene2010learning, binder1997human}.
+
+
 Note that \emph{Subject 5}, who reported concentration problems, have the weakest language network activation from all subjects, which can hinder importantly our capacity to interpret his language related classification results.
 
 
@@ -85,101 +75,16 @@ We present in red the contrast from the visual modality and in green the contras
 \label{fig:language_localizers}
 \end{figure*}
 
-
-\paragraph{\emph{Syllable task} effects:}
-Neural activations related to differences between the nine bi-syllabic conditions are spread across the cortex for all subjects, as reveals the simple check of the contour of an F test, thresholded at p-value < 0.0001, of any difference between conditions, shown in Figure \ref{fig:any-effects}.
-Nonetheless, to pursue the objective of this work, we needed to separate regions encoding the stimuli as a whole (holistic representation) from regions encoding stimuli parts (distributed representation) that might further follow the superposition principle (superposed representation).
-From an statistical point of view, this means that we wanted to discriminate regions on which there are only effects of the first and second syllable position from regions on which there is an interaction effect that would suggest additional encoding terms contradicting the superposition principle.
-In Figure \ref{fig:syllable_effects} we pool together the filled contours of the statistical effects, thresholded at p-value < 0.0001, of any syllable position and their interaction from both auditory and visual modalities.
-From the high level perspective of Figure \ref{fig:syllable_effects}, we can observe that all effects spread around the whole brain and then occupy similar functional regions in all subjects, although position effects seem to occupy a higher portion of the cortex.
-
-\begin{figure}[ht]
-\scriptsize
-\vspace{5ex}
-\hspace{-4ex}
-\begin{tabular}{ccccc}
-\textbf{\Large Subject 1} & \textbf{\Large Subject 2} & \textbf{\Large Subject 3} & \textbf{\Large Subject 4} & \textbf{\Large Subject 5}\\
-{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_01.pdf}}
-\hspace{1ex}
-&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_03.pdf}}
-\hspace{1ex}
-&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_04.pdf}}
-\hspace{1ex}
-&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_05.pdf}}
-\hspace{1ex}
-&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_06.pdf}}
-\hspace{1ex}\\
-\end{tabular}
-\vspace{3ex}
-\caption{\textbf{Any stimuli difference:} We show the contour of the statistical F test reflecting any difference between the bi-syllabic conditions, thresholded at a p-value < 0.0001. Statistical images correspond to the anatomical space of each subject.}
-\label{fig:any-effects}
-\end{figure}
+Checking that our language localizers agree with Fedorenko regions...
 
 
-\begin{figure*}[ht]
-\scriptsize
-\hspace{-4ex}
-\begin{tabular}{ccc}
-\textbf{\Large Subject 1} & \textbf{\Large Subject 2} & \textbf{\Large Subject 3}\\
-{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_01.pdf}}
-\hspace{-1ex}
-&{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_03.pdf}}
-\hspace{-1ex}
-&{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_04.pdf}}
-\hspace{-1ex}\\
-\rule{0pt}{6ex}
-\textbf{\Large Subject 4} & \textbf{\Large Subject 5} & {}\\
-{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_05.pdf}}
-\hspace{-1ex}
-&{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_06.pdf}}
-\hspace{-1ex}
-&{\includegraphics[width=.2\linewidth]{figures/part_II/all-effects_legend.pdf}}
-\hspace{-1ex} \\
-\end{tabular}
-\vspace{3ex}
-\caption{\textbf{Syllable task effects:} We show blobs corresponding to the statistical test of main effects (effect of first and second position) and interaction (sign of holistic representation) for the syllable task, thresholded at a p-value < 0.0001.
-We consider blobs from both auditory and visual modalities of the task together, to portray the extent of the possible effects. Statistical images correspond to in the anatomical space of each subject.}
-\label{fig:syllable_effects}
-\end{figure*}
 
 
-\paragraph{Searchlight networks derived:}
-Since we designed our stimuli to be interpreted from the point of view of morphological processing (language processing), we employed the statistical effect maps from both modalities to determine a sub-network of the identified language network in each subject that would be used for further classification with the searchlight procedure presented in the methods section \ref{sec:searchlight_classification}.
-We show in in Figure \ref{fig:searchlight_regions} the obtained searchlight networks for each subject, while emphasizing that both holistic and superposed representation candidate regions are captured inside the identified language networks.
-Notice that both candidates are spread on the whole fronto-temporal language system and that \emph{Subjects 2 and 4} have broad searchlight networks corresponding to their broader language network activations, as depicted in Figure \ref{fig:language_localizers}.
 
 
-\begin{figure}[ht]
-\scriptsize
-\hspace{-4ex}
-\begin{tabular}{cc}
-\textbf{\Large Subject 1} & \textbf{\Large Subject 2}\\
-{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_01.pdf}}
-\hspace{-1ex}
-&{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_03.pdf}}
-\hspace{-1ex}\\
-\rule{0pt}{6ex}
-\textbf{\Large Subject 3} & \textbf{\Large Subject 4}\\
-{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_04.pdf}}
-\hspace{-1ex}
-&{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_05.pdf}}
-\hspace{-1ex}\\
-\rule{0pt}{6ex}
-\textbf{\Large Subject 5} & {}\\
-{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_06.pdf}}
-\hspace{-1ex}
-&{\includegraphics[width=.3\linewidth]{figures/part_II/searchlight-regions_legend.pdf}}
-\hspace{-1ex} \\
-\end{tabular}
-\vspace{3ex}
-\caption{\textbf{Searchlight networks:} We show the derived searchlight network for each subject. We separate for illustrative purposes the portion of the network derived from interaction effects (Holistic candidate) and from exclusive main effects (Superposition candidate). Images correspond to the anatomical space of each subject.}
-\label{fig:searchlight_regions}
-\end{figure}
-
-
-\section{Sensory-Motor sanity checks}\label{sec:sanity_checks}
-We verified the integrity of the activation maps of the \emph{Syllable task} with statistical tests portraying the left and right hand button press contrast and retinotopic effects of syllable position.
-These tests were also useful to partially test that Support Vector Classification (SVC) with the default hyper-parameters provided in the Nilearn\citep{abraham2014machine} codebase worked well enough in practice with our dataset.
+\paragraph{Motor activations:}
+We verified the integrity of the activation maps of the \emph{Pseudoword matching task} with statistical tests portraying the left and right hand button press contrast and retinotopic effects of syllable position.
+These tests were also useful to verify the capacity of Support Vector Classification (SVC), with the default hyper-parameters provided in the Nilearn\citep{abraham2014machine} codebase, to decode the condition beta maps.
 
 \begin{figure*}[hb]
 \scriptsize
@@ -215,10 +120,10 @@ These tests were also useful to partially test that Support Vector Classificatio
 \end{figure*}
 
 
-We verified that we can classify the left and right button press beta maps extracted from the \emph{Syllable task} GLM, alongside the bi-syllabic condition maps, as explained in the methods section \ref{sec:processing}.
-Z score maps of the left over right button press contrast, for all subjects, are shown in Figure \ref{fig:button_press}, confirming a good statistical separation of the hand responses of the \emph{Syllable task}.
-As can be seen in table \ref{table:clic}, we achieve high classification scores of right and left button press events for all subjects.
-Moreover as would be expected, the classification generalize across sensory modalities that are independent of motor responses.
+We verified that we can classify the left and right button press beta maps derived from the \emph{Pseudoword matching task} General Linear Model (GLM), alongside the pseudoword condition maps, as explained in the methods section \ref{sec:processing}.
+Z score maps of the left over right button press contrast, for all subjects, are shown in Figure \ref{fig:button_press}, confirming a good statistical separation of hand responses in the \emph{Pseudoword matching task}.
+As can be seen in Table \ref{table:clic}, we achieve high classification scores of right and left button press events for all subjects.
+Moreover as would be expected, the classification generalize across sensory modalities.
 
 
 \begin{table}
@@ -235,17 +140,18 @@ Subject & (\%) &  (\%)   & (\%)  & (\%)  &   (\%)\\
 \bottomrule
 \end{tabular}
 \vspace{4ex}
-\caption{\textbf{Classification of left and right button press maps of \emph{Syllable task}:} \emph{V} corresponds to the Visual modality and \emph{A} to the Auditory modality. \emph{V-A} corresponds to pooling together both datasets for training and testing.}
+\caption{\textbf{Classification of left and right button press maps of \emph{Pseudoword matching task}:} \emph{V} corresponds to the Visual modality and \emph{A} to the Auditory modality. \emph{V-A} corresponds to pooling together both datasets for training and testing.}
 \label{table:clic}
 \end{table}
 
 \blankfootnote{\emph{chance: 50\% \\ * : p < 0.01,\\ ** : p < 0.001,\\ *** : p < 0.0001 \\ Bonferroni corrected for 25 similar tests performed}}
 
-Then we visually verified the statistical main effects of syllable position in the Visual hOc1 region.
-In the experimental design we asked the subjects to fixate a center cross before stimuli presentation.
-So we expected, from well known retinotopic effects in the primary visual cortex \citep{tootell1998retinotopy}, to see an hemispheric partition of first and second syllable position effects, such that first syllable effects would be emphasized in the right hemisphere and second syllable effects in the left hemisphere.
-This was the case, as can be seen in Figure \ref{fig:retinotopy}, where \emph{Subjects 1 and 4} have the clearest retinotopic like activations.
-Nonetheless we can also appreciate in the images that some subjects did not manage to completely follow the instruction, since, although weaker, activations of the opposite syllable position, to their corresponding hemisphere, were also present.
+\paragraph{Visual activations:}
+Then we visually verified the statistical effects of left and right syllable position in the Visual hOc1 region.
+In the experimental design we asked the subjects to fixate a centered green dot before stimuli presentation.
+So we expected, from well known retinotopic effects in the primary visual cortex \citep{tootell1998retinotopy}, to see an hemispheric partition of left and right syllable position effects, such that left syllable effects would be emphasized in the right hemisphere and right syllable effects in the left hemisphere.
+This was the case, as can be seen in Figure \ref{fig:retinotopy}, where \emph{Subjects 1 and 4} have the clearest retinotopic activations.
+Nonetheless we can also appreciate in the images that some subjects did not manage to completely follow the fixation instruction, since effects of both positions are present together in both hemispheres.
 
 
 \begin{figure*}[ht]
@@ -329,7 +235,7 @@ we would expect to obtain significant classification scores for the separate mod
 \end{tabular}
 %\includegraphics[width=.15\linewidth]{figures/part_II/searchlight/searchlight_legend.pdf}
 \vspace{3ex}
-\caption{\textbf{Visual classification models:} We present clusters of the overlapping 3 voxel dilated thresholded classification regions of at least 4 subjects. Subject classification results were thresholded above chance level and with bonferroni corrected p < 0.05. We show the overlapped clusters of the first and second syllable models, the distributed model (classification of the joint first and second position models) and the holistic model (classification of syllable combinations). The images reflect classification results in the visual modality dataset of the \emph{Syllable task}}
+\caption{\textbf{Visual classification models:} We present clusters of the overlapping 3 voxel dilated thresholded classification regions of at least 4 subjects. Subject classification results were thresholded above chance level and with bonferroni corrected p < 0.05. We show the overlapped clusters of the first and second syllable models, the distributed model (classification of the joint first and second position models) and the holistic model (classification of syllable combinations). The images reflect classification results in the visual modality dataset of the \emph{Pseudoword matching task}}
 \label{fig:visual_searchlight}
 \end{figure*}
 
@@ -501,30 +407,96 @@ Overlapping effects (close to both a cluster in holistic and distributed)
 
 
 
-\section{Discussion}
 
-Comment on the difficulties of interpretation introduced to distributed representations in vision due to difficulty to control subject gaze position during long periods of time. Eye tracking would have been useful.
 
-Comment on the amodal classification results observed across sensory modalities. There is evidence of the activation of auditory cortex during reading. But also there is evidence of peripheral visual activation during speech processing, particularly for auditory attention related tasks. Nonetheless the amodal results in visual fields remain weird.
+\section{OPTIONAL?}
 
-Could we attribute sensory effects to the order of the visual then auditory syllable task? it should have been alternated with subjects (but we had only 4 decent subjects anyway, so no big thing to test there)
+\paragraph{\emph{Pseudoword matching task} effects:}
+Neural activations related to differences between the nine bi-syllabic conditions are spread across the cortex for all subjects, as reveals the simple check of the contour of an F test, thresholded at p-value < 0.0001, of any difference between conditions, shown in Figure \ref{fig:any-effects}.
+Nonetheless, to pursue the objective of this work, we needed to separate regions encoding the stimuli as a whole (holistic representation) from regions encoding stimuli parts (distributed representation) that might further follow the superposition principle (superposed representation).
+From an statistical point of view, this means that we wanted to discriminate regions on which there are only effects of the first and second syllable position from regions on which there is an interaction effect that would suggest additional encoding terms contradicting the superposition principle.
+In Figure \ref{fig:syllable_effects} we pool together the filled contours of the statistical effects, thresholded at p-value < 0.0001, of any syllable position and their interaction from both auditory and visual modalities.
+From the high level perspective of Figure \ref{fig:syllable_effects}, we can observe that all effects spread around the whole brain and then occupy similar functional regions in all subjects, although position effects seem to occupy a higher portion of the cortex.
 
-Comment on previous effects morphological effects linked to holistic representations. Emphasize amodal clusters.
+\begin{figure}[ht]
+\scriptsize
+\vspace{5ex}
+\hspace{-4ex}
+\begin{tabular}{ccccc}
+\textbf{\Large Subject 1} & \textbf{\Large Subject 2} & \textbf{\Large Subject 3} & \textbf{\Large Subject 4} & \textbf{\Large Subject 5}\\
+{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_01.pdf}}
+\hspace{1ex}
+&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_03.pdf}}
+\hspace{1ex}
+&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_04.pdf}}
+\hspace{1ex}
+&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_05.pdf}}
+\hspace{1ex}
+&{\includegraphics[width=.165\linewidth]{figures/part_II/any-effects_06.pdf}}
+\hspace{1ex}\\
+\end{tabular}
+\vspace{3ex}
+\caption{\textbf{Any stimuli difference:} We show the contour of the statistical F test reflecting any difference between the bi-syllabic conditions, thresholded at a p-value < 0.0001. Statistical images correspond to the anatomical space of each subject.}
+\label{fig:any-effects}
+\end{figure}
 
-Comment on previous effects morphological effects linked to distributed representations. Emphasize amodal clusters.
 
-Discuss the fact that the classification test of superposition failed, even though we find possible distributed representations. Why this could be the case?
+\begin{figure*}[ht]
+\scriptsize
+\hspace{-4ex}
+\begin{tabular}{ccc}
+\textbf{\Large Subject 1} & \textbf{\Large Subject 2} & \textbf{\Large Subject 3}\\
+{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_01.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_03.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_04.pdf}}
+\hspace{-1ex}\\
+\rule{0pt}{6ex}
+\textbf{\Large Subject 4} & \textbf{\Large Subject 5} & {}\\
+{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_05.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=.33\linewidth]{figures/part_II/all-effects_06.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=.2\linewidth]{figures/part_II/all-effects_legend.pdf}}
+\hspace{-1ex} \\
+\end{tabular}
+\vspace{3ex}
+\caption{\textbf{Pseudoword matching task effects:} We show blobs corresponding to the statistical test of main effects (effect of first and second position) and interaction (sign of holistic representation) for the \emph{Pseudoword matching task}, thresholded at a p-value < 0.0001.
+We consider blobs from both auditory and visual modalities of the task together, to portray the extent of the possible effects. Statistical images correspond to in the anatomical space of each subject.}
+\label{fig:syllable_effects}
+\end{figure*}
 
-limitation1: fMRI might not be the right resolution of representation, we are betting on very sparse spatial neural representations for this to work well.
 
-limitation2: What about all the nonlinear effects that can affect our interpretation of interaction effects (a paragraph on nonlinearities)
+\paragraph{Searchlight networks derived:}
+Since we designed our stimuli to be interpreted from the point of view of morphological processing (language processing), we employed the statistical effect maps from both modalities to determine a sub-network of the identified language network in each subject that would be used for further classification with the searchlight procedure presented in the methods section \ref{sec:searchlight_classification}.
+We show in in Figure \ref{fig:searchlight_regions} the obtained searchlight networks for each subject, while emphasizing that both holistic and superposed representation candidate regions are captured inside the identified language networks.
+Notice that both candidates are spread on the whole fronto-temporal language system and that \emph{Subjects 2 and 4} have broad searchlight networks corresponding to their broader language network activations, as depicted in Figure \ref{fig:language_localizers}.
 
-limitation3: classification hyperparameter tuning not performed in nested crossvalidation
 
-limitation4: Problems to assess statistical correction of the classification model. Bonferroni might be too much and the rank wilcoxon test with 100 samples might not be enough. In superposition we only had 27 samples with overlapping test sets, which is also not optimal and 27 is low for the wilcoxon test.
-
-limitation5: Maybe the whole wilcoxon noise comparison methodology sucks for some reason I have not considered?
-
-limitation6: commment on the number of features vs number of samples in each SVC sphere? got like 100 voxels (recheck actual number) (5mm radius) for 9 samples for 16 sessions for 2 modalities. Still too many features then.
-
-Would a comment on results without smoothing be interesting? With a small addition to the results and method sections? Only if no smoothed images are better, which would be interesting considering that we want to approximate neural vectors.
+\begin{figure}[ht]
+\scriptsize
+\hspace{-4ex}
+\begin{tabular}{cc}
+\textbf{\Large Subject 1} & \textbf{\Large Subject 2}\\
+{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_01.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_03.pdf}}
+\hspace{-1ex}\\
+\rule{0pt}{6ex}
+\textbf{\Large Subject 3} & \textbf{\Large Subject 4}\\
+{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_04.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_05.pdf}}
+\hspace{-1ex}\\
+\rule{0pt}{6ex}
+\textbf{\Large Subject 5} & {}\\
+{\includegraphics[width=.5\linewidth]{figures/part_II/searchlight-regions_06.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/searchlight-regions_legend.pdf}}
+\hspace{-1ex} \\
+\end{tabular}
+\vspace{3ex}
+\caption{\textbf{Searchlight networks:} We show the derived searchlight network for each subject. We separate for illustrative purposes the portion of the network derived from interaction effects (Holistic candidate) and from exclusive main effects (Superposition candidate). Images correspond to the anatomical space of each subject.}
+\label{fig:searchlight_regions}
+\end{figure}

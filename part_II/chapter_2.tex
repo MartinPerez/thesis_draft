@@ -5,38 +5,238 @@ The syllables superposition experiment}
 
 \begin{chabstract}
 
-In this chapter we present the experimental design and the data preprocessing and analysis methods employed.
+In this chapter we present the two tasks of the experimental design, the Bold-fMRI data acquisition, preprocessing and processing, and the analysis methods employed to assess the Regions of Interest most likely to implement superposed representations.
 
 \end{chabstract}
 
-% notes
-% introduction
-% review the problem of binding from a connectionist perspective
-% review the mechanism of the tensor framework and its operational implications. In particular the substraction of components.
-
 \section{Experimental design}
-%
-% experimental design
-% remember to mention in other sections the risks of the task itself.
-% that we are looking for automatic responses and not forcing any
-% particular operation that forces unification. Equally emphasizing both
-% syllables too in the task to at least force complete processing.
 
-\section{Data preprocessing}
-% simple acquisition, preprocessing, glm processing methods
+\paragraph{Participants:}
+Five native French speakers participated in the experiment (two females with ages 22 and 32 and three males with ages 23, 26 and 36).
+All subjects had high school background from French universities (Bac) and were right handed with a Laterality Quotient (LQ) of at least 40 (mean 70, SD 20.98), as measured by the Edinburgh Handedness Inventory\citep{oldfield1971assessment}.
+The experiment was sponsored by the language neuroimaging unit of Unicog lab U-992 in NeuroSpin, and received ethical approval by the regional ethical committee (Comite de Protection des Personnes, hopital de Bicetre).
+All subjects gave written informed consent and received 80 euros for their participation.
+
+\paragraph{Introduction to the experimental design:}
+
+Two tasks were implemented for the experiment;
+a language localizer task, well explored and validated in the literature\citep{mahowald2016reliable}, to identify in each subject language processing regions, and a pseudoword matching task to obtain brain representations of syllable permutations.
+All experimental tasks were implemented with python scripts exploiting the capabilities of the Expyriment python library\citep{krause2014expyriment}.
+
+For both tasks, visual and auditory sensory modalities were used for stimulation, since in language regions we aim to find abstract representations insensitive to sensoty modality.
+Visual Stimuli consisted of text, projected one word at a time in rapid serial visual presentation (RSVP), on a translucent screen with a digital light processing projector (PTD7700E, panasonic, frame rate: 60 Hz, resolution of 1024 x 768), with a viewing distance of 89 cm.
+Auditory Stimuli were delivered through MRI-compatible headphones (MR confon), and the volume was adjusted for each participant to a comfortable hearing level.
+
+
+\subsection{Language Localizer}
+
+\paragraph{Stimuli:}
+The stimuli consisted on blocks of three phrases and blocks of three non word sequences that varied in implementation with the sensory modality.
+These blocks were presented in an alternated fashion with the purpose of extracting brain areas processing language from the contrast of these block categories\citep{mahowald2016reliable}.
+Visual stimuli was text presented in the screen with a fixed point Inconsolata font\footnote{https://fonts.google.com/specimen/Inconsolata}.
+The text comprised 0.72 degrees of vertical visual angle and a maximum of 5.8 degrees of horizontal visual angle, with the longest word having 14 letters.
+The visual non words stimuli was formed by replacing words in the phrases with consonant strings, for example "the cat" would be replaced by "ztr pfg".
+Auditory stimuli consisted on the same phrases digitally recorded at 22.05 kHz in a quiet room by a male speaker.
+Phrase recordings had a mean duration of 2.33 seconds (SD, 0.41 s), giving a total average duration of 7 seconds for a block made of three sequences.
+To generate the control auditory non word sequences, the phrase recordings were scrambled with the multiband approach suggested by Ellis and Lee\citep{ellis2010time}, but with python code using the Brain Hears software\citep{fontaine2011brian}.
+
+\paragraph{Task and trial structure:}
+The subjects were instructed to read or listen to the word sequences and pay attention to the non word sequences.
+Each trial consisted on presenting one of the blocks designed, which were phrases or non words.
+Each block made of word and non word units contains three sequences, the first sequence made of 9 units, the second of 10 units and the last of 9 units.
+A fixation cross would be presented before the presentation of each sequence, for 500 ms, followed by a blank screen for 500 ms.
+In the visual case, each text unit would be presented regularly for 200 ms, which is not the case in the audtiory modality that has variable sequence duration.
+Between the presentation of the three different sequences a blank screen would be presented for 600 ms.
+At the end of the presentation of the three sequences a blank screen would be presented for 7 seconds waiting for the next trial (the next block).
+There were 4 runs of acquisition and in each of them 90 trials were
+presented.
+In Figure \ref{fig:langlog_trial} we show an example of a sequence in the visual modality.
+
+\begin{figure*}[hptb]
+\centering
+\includegraphics[width=1.0 \linewidth]{figures/part_II/langloc_trial.png}
+\caption{\textbf{Visual trial of the language localizer:}
+Each black square represents the screen at a different time point.
+Only one example word and non word (consonant string) sequence is shown, which comprises only one third of a block stimuli.
+}
+\label{fig:langloc_trial}
+\end{figure*}
+
+
+\subsection{Pseudoword matching task}
+
+% Stimuli
+\paragraph{Stimuli:}
+The syllables "fi", "gu" and "na" were selected to form all the possible pseudoword permutations "fifi", "figu", "fina", "gufi", "gugu", "guna", "nafi", "nagu" and "nana".
+These syllables were selected under two constraints.
+The first was that all syllabic combinations would not lead to word formation, such that we could assume similar sensory and language processing of symmetric representations like "figu" and "gufi", expecting only syllable position effects.
+The second was that we wanted to improve auditory discriminability, so we selected one velar consonant "gu", one labio-dental "fi" and one alveolar "na" with their respective high-back tongue "u", high-front tongue "i" and low-back tongue "a" vowels.
+We based this heuristic on the phonetic organization of spatial patterns demonstrated in the cortex by Bouchard et al\citep{bouchard2013functional}.
+
+The pseudowords were presented in a visual and auditory modality.
+In the visual case they were presented as text in the screen with a fixed point Inconsolata font.
+We decided to make the text as big as possible to increment expected retinotopic effects but also tried to avoid the stimuli perception to be unnatural and too tiring for the subjects, so finally the pseudowords were presented as lowercase text centered on the screen, spanning maximum 2.39 degrees of vertical visual angle and maximum 5.05 degrees of horizontal visual angle.
+In the auditory case each syllable was digitally recorded at 22.05 kHz in a quiet room by a male speaker and then the recordings were combined to produce with a 660 ms duration all the possible pseudowords having identically pronounced syllables in each position.
+The matching task was not constant across trials, so we decided to make a clear distinction between the target and probe stimuli.
+Then we presented smaller uppercase text spanning 0.6 degrees of vertical visual angle and 1.68 degrees of horizontal visual angle for the visual modality and modified recordings of the syllables with higher pitch for the auditory modality.
+
+
+\paragraph{Task and trial structure:}
+The task consisted on keeping the pseudowords in memory for a possible comparison with a second pseudoword.
+The exact instruction given to the subjects was to fixate a green dot that would signal appearance of the pseudoword that had to be kept in memory until the arrival of a red dot that signaled the end of the trial.
+The subjects were instructed to keep paying attention to the screen or sound for a second pseudoword that would appear only in some randomly selected trials, in which case, confirmation of a positive match would be done with a right hand button press and of a negative match with a left hand button press.
+We included the matching task to validate subjects were paying attention to the stimuli, but we did not include a matching task on each trial to try to maximize the amount of stimuli presented in a session.
+
+The green dot appeared for 0.5 seconds followed by a flashing presentation of the pseudoword, in the visual case, to be kept in memory for 3.2 seconds with a 0.25 seconds jitter.
+We decided to present the visual pseudowords for only 0.2 seconds to minimize the influence of saccades in the estimation of brain activations.
+In the matching task trials, the second pseudoword was presented for 0.5 seconds followed by a response and rest period of 6.5 seconds.
+At the end of the trial the red dot was presented for 0.5 seconds followed by a 2.5 seconds resting period.
+Each imaging run consisted of 45 trials (5 per pseudoword), where the order of presentation of the pseudoword conditions was shuffled.
+In total there were 8 runs in a session, with two auditory sessions and two visual sessions, for a total of 80 trials per condition per modality.
+Only nine trials were randomly selected to contain a second pseudoword to perform a matching task.
+We show the structure of a trial from the visual modality in Figure \ref{fig:syllable_trial}.
+In the auditory case the trial structure is identical except for the 660 ms duration of the pseudowords recordings, in which case the memory time was reduced to 2.8 seconds to have the same trial total duration as in the visual case.
+
+
+\begin{figure}[hptb]
+\centering
+\includegraphics[width=1.0 \linewidth]{figures/part_II/syllable_trial.png}
+\caption{\textbf{Visual trial example of the pseudoword matching task:}
+A green dot is presented for 500 ms, followed by a pseudoword flashed twice for a total presentation duration of 200 ms.
+It has to be kept in memory for a period of 3200 ms with a 250 ms jitter.
+Nine times in a run a second uppercased pseudoword is presented for comparison during 500 ms with a response period of 6500 ms.
+}
+\label{fig:syllable_trial}
+\end{figure}
+
+
+\section{Data acquisition and processing}
+
+\paragraph{Imaging:}
+The acquisition was performed with a 3 Tesla Siemens Prisma Fit system equipped with a thirty two channels coil.
+Anatomical images were taken using a 3D Gradient-echo sequence and voxel size of 1x1x1 mm.
+Functional images were acquired as T2*-weighted echo-planar image volumes (Multi-Band EPI C2P from Minnesota University).
+The MultiBand EPI consisted on the parallel acquisition of 4 slices at a time, reconstructed by a parallel imaging reconstruction algorithm\citep{chaari2011wavelet}.
+Eighty transverse slices covering the whole brain were obtained with a TR of 1.5s and a voxel size of 1.5 x 1.5 x 1.5 mm (TE = 26.8 ms, flip angle = 70, no gap).
+Moreover accurate timing of stimuli presentation relative to FMRI acquisition was achieved with an electronic trigger at the beginning of each run.
+
+\paragraph{Acquisition sessions:}
+Each subject had four sessions of scanning with a similar structure.
+The first two sessions included the visual version of the pseudoword matching task and the last two sessions the auditory version.
+Each scanning session lasted 78 min and 6 sec with an anatomical scan and 10 functional runs structured as follows:
+
+\begin{enumerate}[leftmargin=1.5cm, itemsep=-0.12cm, topsep=0.25cm]
+\item Anatomical T1 (1 volume, 7m 46s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Language localizer task "Visual" (435 volumes, 11m 27s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Pseudoword matching task "Visual/Auditory" (253 volumes, 6m 54s)
+\item Language localizer task "Auditory" (435 volumes, 11m 27s)
+\end{enumerate}
+
+% Preprocessing
+\paragraph{Data preprocessing:}
+The OASIS-30 Atropos template atlas from Mindboggle\footnote{http://www.mindboggle.info/data.html} was used as reference for normalization and segmentation of the subjects anatomy. The methodology behind this atlas is based on state of the art algorithms from the Advanced Normalization Tools (ANTS) and a cohort of 101 manually segmented subjects, giving very precise probabilistic maps and anatomical ROIs\citep{klein2005mindboggle}. A transformation between this template and one provided by ICBM in MNI space was also performed for MNI coordinate reports and visualization. The ICBM 2009a Nonlinear Asymmetric template was considered\citep{collins1999animal+}.
+
+After normalization and segmentation of each subject anatomy. The functional runs of all tasks were slice timed with SPM with reference to the 1st slice (default SPM behavior) and realigned with respect to the 3rd volume of the first acquired run of the first session.
+Realignment was performed with FSL MCFLIRT algorithm and coregistration was also performed with FSL but with the FLIRT algorithm employing a boundary based registration that takes into account previously performed white matter segmentation of the anatomy\citep{greve2009accurate}.
+All preprocessing steps were implemented with the Nipype software\citep{gorgolewski2011nipype}.
+
+\paragraph{Data processing:}
+The General Linear Model (GLM) estimation was performed on the non-smoothed, non-normalized and realigned functional images and on a 6 mm gaussian kernel smoothed version of the same images.
+The GLM was implemented with the Nistats\footnote{https://github.com/nistats/nistats} software, which is part of the Nipy and Nilearn\citep{abraham2014machine} ecosystem.
+Each pseudoword condition was modelled with one regressor, alongside left and right motor events derived from the behavioral responses and motion regressors extracted from the realignment preprocessing step.
+A glover HRF was employed for the estimation with an additional cosine drift model to high-pass filter above 1/128Hz.
+The beta maps extracted were employed for statistical estimation of motor contrasts and syllable position effects, for which a fixed effect model was considered across runs and sessions in each subject.
+To obtain statistical effects of syllable position, we modelled the conditions as two factors (left and right position), with three levels (syllables fi, gu and na).
+We estimated contrast vectors for the effect of left position, effect of right position and interaction of left and right positions, by employing the procedure of Henson and Penny\citep{henson2003anovas}, as implemented in the SPM software.
+
+It has been shown that taking into account trial-to-trial variability is desirable for multivoxel pattern analysis (MVPA)\citep{abdulrahman2016effect, mumford2012deconvolving}.
+As we wanted to look into the representational patterns of the different pseudowords, we decided to also estimate one beta map per trial, following the same methods employed for beta-series analysis\citep{cisler2014comparison}.
+We also took advantage of the trial beta maps to consider attention modulated variability in the voxel patterns of the pseudowords, since the task do not allow us to verify the processing integrity of each trial but only to motivate subjects engagement.
+
 
 \section{Data analysis}
-% Introduction to the searchlight methodology
-% Derivation of language related and syllable discriminant network
-% Searchlight classification models considered (demonstration of the superposition model with quick equations)
-% Group level methodology presentation. how we dilate and compare models. how we extract clusters and how we populate their classification tables.
 
-% Note for methods
+\subsection{Regions of Interest (ROIs)}
+
+\paragraph{Sensory-Motor regions:}
+In Figure \ref{fig:sensory_example_img} we display the contours of primary sensory-motor regions, taken from the cytoarchitectonic SPM toolbox\citep{eickhoff2005new}, projected on the anatomy of Subject 1 alongside the gray matter mask.
+Notice that the primary regions are broad, since we considered any voxel with non zero probability as part of the region, and cover both hemispheres.
+
+
+\begin{figure}[hptb]
+\centering
+\includegraphics[width=1.0 \linewidth]{figures/part_II/sensory_example_img_with_legend.pdf}
+\caption{\textbf{Sensory-motor regions projected on \emph{Subject 1} anatomy:}
+Contours are shown for the projected primary Visual, Auditory and Motor regions, alongside the subject extracted gray matter.
+}
+\label{fig:sensory_example_img}
+\end{figure}
+
+
+\paragraph{Language regions:}
+In Figure \ref{fig:fedorenko_example_img} we display the contours of the language localizer parcels derived by Mahowald and Fedorenko\citep{mahowald2016reliable}, that will be employed to evaluate the quality of the language localizer contrasts.
+Then in Figure \ref{fig:langrois_example_img} we display the contours of left hemispheric language regions of interest taken from the Pallier et al. experiment in which phrase constituency effects were detected\citep{pallier2011cortical}.
+We also show the joint Broca 44 and 45 regions taken from the cytoarchitectonic SPM toolbox\citep{eickhoff2005new}, which is again broad due to non zero probability consideration in the probabilistic map.
+
+
+\begin{figure}[hptb]
+\centering
+\includegraphics[width=1.0 \linewidth]{figures/part_II/fedorenko_example_img_with_legend.pdf}
+\caption{\textbf{Language localizer parcels projected on \emph{Subject 1} anatomy:}
+Contours are shown for the projected language localizer parcels reported by Mahowald and Fedorenko.
+}
+\label{fig:fedorenko_example_img}
+\end{figure}
+
+
+\begin{figure}[hptb]
+\centering
+\includegraphics[width=1.0 \linewidth]{figures/part_II/language_example_img_with_legend.pdf}
+\caption{\textbf{Language regions of interest projected on \emph{Subject 1} anatomy:}
+Contours are shown for the projected left hemispheric language regions of interest. We include the 6 regions reported by Pallier et al. to show phrase constituency effects and the joint Broca 44 and 45 regions taken from the cytoarchitectonic SPM toolbox.
+}
+\label{fig:langrois_example_img}
+\end{figure}
+
+
+\subsection{Sanity checks}
+
+
+
+
+\subsection{Classification and feature selection methods}
+
+\paragraph{Sensory classification:}
+
+
+\paragraph{Language related classification:}
+
+% Sanity checks to perform
 %There are several sanity checks related to activation maps and classification of the \emph{Syllable task} that we could perform in sensory-motor regions.
-% worrying in particular that the lack of a nested cross-validation fit of the hyper-parameters due to the severe time computational costs of the searchlight procedure.
 
-\section{Coordinate based fMRI metanalysis of morphological effects}
-% Introduce here how the coordinates were extracted from papers?
-% Facilitates link in discussion? were clusters are linked to effects by their coordinates.
+Cite Numpy, Pandas, Nilearn and Scikit-learn, as the python scientific ecosystem. Anaconda?
+% Feature selection
+% Derivation of language related and syllable discriminant network for feature selection
+% Introduction to the searchlight methodology for feature selection.
+% Discriminability of representations (classification and final feature selection procedure)
 
+% Stability of representations
+%(Further Stability considerations) Outlier detection for sample selection (How it changes discriminability?)
+% Biclustering and outlier selection (theoretical example?)
 
+\subsection{Additional tests of structure in representations}
+
+\paragraph{Spatial distribution test of representations:}
+% Spatial distribution test of representations
+% Theoretical vs random data SVC procedure (theoretical example?)
+
+\paragraph{Superposition test of representations:}
+% Superposition test of representations
+% Max-min due to noisy representations (formula?)
