@@ -5,7 +5,7 @@ The syllables superposition experiment}
 
 \begin{chabstract}
 
-In this chapter we present the two tasks of the experimental design, the Bold-fMRI data acquisition, preprocessing and processing, and the analysis methods employed to assess the Regions of Interest most likely to implement superposed representations.
+In this chapter we present the two tasks of the experimental design, the Bold-fMRI data acquisition, preprocessing and processing, and the analysis methods employed to assess the likelihood of superposed representations in the Regions of Interest considered.
 
 \end{chabstract}
 
@@ -148,20 +148,26 @@ Realignment was performed with FSL MCFLIRT algorithm and coregistration was also
 All preprocessing steps were implemented with the Nipype software\citep{gorgolewski2011nipype}.
 
 \paragraph{Data processing:}
-The General Linear Model (GLM) estimation was performed on the non-smoothed, non-normalized and realigned functional images and on a 6 mm gaussian kernel smoothed version of the same images.
+Two General Linear Model (GLM) estimations were performed, one on the non-smoothed, non-normalized and realigned functional images and the second on the smoothed version of the same images, with 6 mm gaussian kernel.
 The GLM was implemented with the Nistats\footnote{https://github.com/nistats/nistats} software, which is part of the Nipy and Nilearn\citep{abraham2014machine} ecosystem.
-Each pseudoword condition was modelled with one regressor, alongside left and right motor events derived from the behavioral responses and motion regressors extracted from the realignment preprocessing step.
 A glover HRF was employed for the estimation with an additional cosine drift model to high-pass filter above 1/128Hz.
-The beta maps extracted were employed for statistical estimation of motor contrasts and syllable position effects, for which a fixed effect model was considered across runs and sessions in each subject.
+
+The language localizer was modelled with two regressors for the block conditions, alongside motion regressors extracted from the realignment preprocessing step.
+Statistical estimation of a contrast between the two block conditions was performed on the smoothed images to extract the language network.
+
+In the case of the pseudoword matching task, each pseudoword condition was modelled with one regressor, alongside left and right motor events derived from the behavioral responses and motion regressors extracted from the realignment preprocessing step.
+The condition beta maps corresponding to the smoothed images were employed for statistical estimation of motor contrasts and syllable position effects, for which a fixed effect model was considered across runs and sessions in each subject.
 To obtain statistical effects of syllable position, we modelled the conditions as two factors (left and right position), with three levels (syllables fi, gu and na).
-We estimated contrast vectors for the effect of left position, effect of right position and interaction of left and right positions, by employing the procedure of Henson and Penny\citep{henson2003anovas}, as implemented in the SPM software.
+We estimated contrast vectors for the effect of left position, effect of right position and interaction of left and right positions, by employing the contrasts vector specification procedure of Henson and Penny\citep{henson2003anovas}.
 
 It has been shown that taking into account trial-to-trial variability is desirable for multivoxel pattern analysis (MVPA)\citep{abdulrahman2016effect, mumford2012deconvolving}.
 As we wanted to look into the representational patterns of the different pseudowords, we decided to also estimate one beta map per trial, following the same methods employed for beta-series analysis\citep{cisler2014comparison}.
-We also took advantage of the trial beta maps to consider attention modulated variability in the voxel patterns of the pseudowords, since the task do not allow us to verify the processing integrity of each trial but only to motivate subjects engagement.
+This is also desirable to capture attention modulated variability in the voxel patterns of the pseudowords, since the task do not allow us to verify the processing integrity of each trial but only to motivate subjects engagement.
 
 
 \section{Data analysis}
+
+All data analysis was performed employing diverse Python scientific open source libraries\ref{oliphant2007python}: Numpy\ref{walt2011numpy}, Pandas\ref{mckinney2010data}, Matplotlib\ref{hunter2007matplotlib}, Ipython\ref{perez2007ipython}, Scikit-Learn\ref{pedregosa2011scikit} and the neuroimaging library Nilearn\ref{abraham2014machine}.
 
 \subsection{Regions of Interest (ROIs)}
 
@@ -208,35 +214,85 @@ Contours are shown for the projected left hemispheric language regions of intere
 
 \subsection{Sanity checks}
 
+To verify the integrity of the language localizers acqusitions, we compared the thresholded activations of the constrasts (word sequence over non words sequence), with the parcels of Mahowald and Fedorenko.
+These parcels represent likely activation derived from thresholded maps of hundreds of subjects, so not being able to cover them with our language localizer would signal problems with the acqusition and limit our interpretation of syllabic representations in the derived language network.
+
+In the case of the pseudoword matching task runs, we validated the estimated activation maps in two ways.
+First we verified the statistical effect of the left vs right motor response contrast and checked that we could decode left and right response activation maps derived from the GLM estimation.
+Second we looked for expected retinotopic effects of the centered text in the visual modality, that would imply a separation of the statistical effects of the first syllable position and second syllable position in the right and left hemispheres respectively.
 
 
+\subsection{Classification and structural tests of representations}
 
-\subsection{Classification and feature selection methods}
+\paragraph{Classifiers:}
+For all classification models we first standardized the activation values in the voxels (features) selected, taking into account activations from the 720 trial maps of each sensory modality.
+The standardized features were then passed to a NuSVC linear classifier, for which we performed a grid search for the best value of the "nu" parameter taken from 0.2, 0.5 and 0.8.
+We employed the multiclass One Vs Rest (ovr) classification strategy, such that the decision function is based on one classifier per condition.
+A Leave One Out Cross Validation (LOOCV) procedure based on sessions was implemented for all trained classifiers.
+For estimation of p-values for accuracy and other measurements taken from the classifier, we retrained a model 100 times with shuffled labels.
 
-\paragraph{Sensory classification:}
+% Maybe increase permutations to 1000 for final thesis days?
+
+\paragraph{Classification models:}
+The final objective was to analyze in Regions of Interest (ROIs) classification of First Position syllables (First model), Second Position (Second model) syllables and Pseudowords (Pseudoword model).
+Then chance on the First and Second model was 33.33\% for the three conditions "fi", "gu" and "na", and 11.11\% for the nine pseudoword conditions.
+From each classification model we extracted confusion matrices and the model coefficients for further analysis.
+
+\paragraph{Searchlight and voxel selection procedure for ROI analysis:}
+The ROIs that we considered had thousands of voxels (features), which impacts negatively the performance of classifiers, so we first decided to select promising voxels by running a Searchlight\ref{etzel2013searchlight} classification procedure on a 5 milimiter radius spheres.
+We run in each sphere three classifiers: the first position syllable classifier, the second position syllable classifier and the pseudoword classifer.
+The classifiers accuracy was assigned to the center voxel of each sphere, resulting in three accuracy maps.
+Then voxels from each map were ranked and the top "n" voxels of each map alongise a 3 mm sphere around them were taken as features for the final ROI classifier.
+The number "n" of top voxels to consider was cross validated in the parameter grid search of the ROI classifiers, taking values from 1 to 40 in sensory regions and from 1 to 10 in language regions.
+
+% The center voxels were selected intermitently after masking the images, so one voxel every two, since contigous voxels (features) would be captured by multiple models.
+% We expected to identify, in the small spheres, features capable of separating at least some of the classes, so we selected spheres that gave maximum accuracy on the classification of any class and not on overall accuracy.
+% The spheres providing the best accuracy for each class were considered together to fit one final model for each ROI.
+% We expected the final classifier would be able to distinguish all categories while keeping the number of features as low as possible.
+% missing clarification on number of best spheres taken (grid searched?)
+% missing clarification on separate feature selection considerations for first and second models vs pseudoword models (only 6 peaks for first and second? 9 for pseudowords? or 15 for all?...)
+
+\paragraph{Implications of the superposition principle:}
+The superposition principle predicts that neural representations (voxel activations) should follow Equation \ref{equation:superposition}.
+This means that the activation value of a pseudoword at a voxel is the sum of the activation value of a syllable bound to the first position and the activation value of the another syllable bound to the second position.
+Then we would expect the representation patterns of pseudowords sharing syllables in the same position to be more similar to each other than completely unrelated pseudowords.
+Moreover we would expect pseudowords sharing syllables in different positions to not be more similar to each other than to other unrelated pseudowords, since the neural activity of a syllable is meant to change after being bound to its position.
+
+\begin{equation}
+Activation = Syllable \times Position_1 + Syllable \times Position_2 + Noise
+\label{equation:superposition}
+\end{equation}
 
 
-\paragraph{Language related classification:}
+\paragraph{Testing superposition with confusion matrices:}
+In Figure \ref{fig:super_confusion} we identify each of the cells of a confusion matrix according to the relationship between pseudowords.
+Besides the diagonal of the confusion matrix of a classifier representing accuracy, we have three more types of cells: when there is a syllable overlap in some position; when there is a common syllable in a different position; and when there are no common syllables between pseudowords.
+The representation similarity structure given by the linear terms in the superposition equation should be reflected in the confusion between conditions in a linear classifier, which means that we can compare the mean confusion of the different cell groups to provide evidence for or against superposed representations.
+The principle predicts that the confusion of a position overlap should be higher than that of no overlap while the confusion of a crossed overlap should be no different from that of no overlap.
+This means that a positive difference of crossed overlap confusion over no overlap would be evidence against superposition, while a positive difference of position overlap over no overlap would be evidence in favor of superposition.
 
-% Sanity checks to perform
-%There are several sanity checks related to activation maps and classification of the \emph{Syllable task} that we could perform in sensory-motor regions.
 
-Cite Numpy, Pandas, Nilearn and Scikit-learn, as the python scientific ecosystem. Anaconda?
-% Feature selection
-% Derivation of language related and syllable discriminant network for feature selection
-% Introduction to the searchlight methodology for feature selection.
-% Discriminability of representations (classification and final feature selection procedure)
+\begin{figure}[ht]
+\scriptsize
+\hspace{-4ex}
+\begin{tabular}{cl}
+{\includegraphics[width=0.3\linewidth]{figures/part_II/super_matrix_legend.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=0.6\linewidth]{figures/part_II/super_matrix.pdf}}
+\hspace{-1ex}\\
+\end{tabular}
+\caption{\textbf{Cell types in the confusion matrix of a pseudoword classifier:}
+The diagonal represents the classification accuracy of the different pseudowords. The rest of the cells correspond to pseudowords that have an overlapping syllable in one position (Position overlap), a common non overlapping syllable (Crossed overlap) or no common syllables (No overlap).}
+\label{fig:super_confusion}
+\end{figure}
 
-% Stability of representations
-%(Further Stability considerations) Outlier detection for sample selection (How it changes discriminability?)
-% Biclustering and outlier selection (theoretical example?)
 
-\subsection{Additional tests of structure in representations}
+\paragraph{Segregation of syllable position representations:}
+We also tested the sparsity of position related representations, which should be fulfilled at least in visual areas due to the hemispheric separation of syllable positions given by retinotopy.
+Independently of the possible superposed nature of representations, position encodings could be completely distributed across all voxels or segregated as in the retinotopic case.
+Testing the segregation of representations is interesting for the Smolensky's framework that propose the possibility of completely distributed representations.
+From the best feature (voxel) coefficients of the linear classifiers of the first position and second position syllables we can get an idea of the level of segregation of information in the voxels.
+Since a similar subset of voxels is included in both classifiers, we would expect an statistically extreme overlap of the feature rankings, given by the coefficients, in case of distributed representations, while we would expect less overlap than that given by change in case of segregated representations.
+We determined the effects of chance by considering the models trained with shuffled labels, from which we determine the distribution of overlap percentage considering the "n" best voxels of both models for all "n".
+An example of the appearance of such a distribution is demonstrated in Figure \ref{fig:segregation_test}
 
-\paragraph{Spatial distribution test of representations:}
-% Spatial distribution test of representations
-% Theoretical vs random data SVC procedure (theoretical example?)
-
-\paragraph{Superposition test of representations:}
-% Superposition test of representations
-% Max-min due to noisy representations (formula?)
