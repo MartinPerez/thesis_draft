@@ -224,6 +224,9 @@ Second we looked for expected retinotopic effects of the centered text in the vi
 
 \subsection{Classification and structural tests of representations}
 
+% Never explained motor classification test... was different...
+% Should have run motor classification on trial maps....
+
 \paragraph{Classifiers:}
 For all classification models we first standardized the activation values in the voxels (features) selected, taking into account activations from the 720 trial maps of each sensory modality.
 The standardized features were then passed to a NuSVC linear classifier, for which we performed a grid search for the best value of the "nu" parameter taken from 0.2, 0.5 and 0.8.
@@ -239,11 +242,17 @@ Then chance on the First and Second model was 33.33\% for the three conditions "
 From each classification model we extracted confusion matrices and the model coefficients for further analysis.
 
 \paragraph{Searchlight and voxel selection procedure for ROI analysis:}
+
+% Did not explain ho the region of the searchlight was determined.... by the intersection of langloc 0.001 and any syllable position effect or interaction of 0.001 (where a voxel was considered if any voxel in a sphere radius of 3mm captured such effects)
+
 The ROIs that we considered had thousands of voxels (features), which impacts negatively the performance of classifiers, so we first decided to select promising voxels by running a Searchlight\ref{etzel2013searchlight} classification procedure on a 5 milimiter radius spheres.
 We run in each sphere three classifiers: the first position syllable classifier, the second position syllable classifier and the pseudoword classifer.
 The classifiers accuracy was assigned to the center voxel of each sphere, resulting in three accuracy maps.
 Then voxels from each map were ranked and the top "n" voxels of each map alongise a 3 mm sphere around them were taken as features for the final ROI classifier.
 The number "n" of top voxels to consider was cross validated in the parameter grid search of the ROI classifiers, taking values from 1 to 40 in sensory regions and from 1 to 10 in language regions.
+
+% Searchlight was really performed with the avg beta maps of each session
+% 
 
 % The center voxels were selected intermitently after masking the images, so one voxel every two, since contigous voxels (features) would be captured by multiple models.
 % We expected to identify, in the small spheres, features capable of separating at least some of the classes, so we selected spheres that gave maximum accuracy on the classification of any class and not on overall accuracy.
