@@ -10,6 +10,38 @@ In this chapter we introduce .
 \end{chabstract}
 
 
+\paragraph{Final considerations of the tensor framework (link to introduction):}
+
+
+Consideration 1: The superposition principle.
+
+The neural activation of a structure S is defined as the sum of the components/fillers "f" of the structure ("f" however defined for the given stimuli) binded to the roles "r" that those components play in the structure ("r" however defined for the given stimuli). Smolensky assumes the linear operation of addition in his tensor product framework to accumulate the activation contribution of the different fillers binded to their respective roles, this is the superposition principle. This assumption leads to predictions like AB-AC = DB-DC since for example $[(AxR1) + (BxR2)] - [(AxR1) + (CxR2)] = [(BxR2) - (CxR2)]$.
+
+Consideration 2: Linear independence considerations
+
+Smolensky assumes that the vector set describing the neural activation contribution of the fillers are linearly independent and assumes the same for the vector set of the roles. Nonetheless there is no constraint on how the set of filler vectors and the set of role vectors are with respect to each other.
+
+The linear independence is not a strict demand, since there is a graceful degradation as the correlation between vectors increases when linear independence is lost on a distributed representation. Moreover this assumption is only important in the case we were planning to perform unbinding operations to extract unknown filler or role vectors from known role or filler vectors respectively.
+
+So we would not bother with this assumption with BOLD-fMRI techniques if we think the activation vector components to be directly related to neurons. But if the components of the activation vector is related to the average activity of neural populations (catured in voxels) then linear independence of the whole brain related vectors becomes relevant. Although defining the set of voxels that can be assumed to form the vector becomes another problem.
+
+Consideration 3: Distributed representation
+
+Smolensky tensor product framework assumes the possibility of distributed representations. The tensor product itself reflect this principle as the activation of a neural unit (component of the neural vector) is given by Sum(fi x ri).
+
+From the neurobiological point of view, it seems likely that there are distributed representation when we are able to find with coarse random sampling neurons tuned to specific experimental stimuli. Consider for example the work by \citep{allman_stimulus_1985}, that characterizes the receptive field of a set of sampled neurons to moving dots.
+
+Consideration 4: Sparsed representation
+
+Smolensky tensor product framework do not motivate in itself the necessity of sparsed representations, but allow it as a special case of distributed representations.
+
+From the neurobiological point of view, it seems likely that there is certain degree of sparsity. \citep{olshausen_emergence_1996} for example shows how a coding strategy that maximizes sparseness is sufficient to account for important properties of the mammalian primary visual cortex, which are considered to be spatially localized, oriented and bandpass, comparable to the basis functions of wavelet transforms.
+
+In the neuroscientific literature the actual degree of sparseness related to neural representations is still debated, sometimes even only one neuron is found to be responsive to very specific stimuli, giving rise to the hypothesis of grandmother cells. An interesting debate on this account is presented by \citep{bowers_biological_2009}. Nonetheless the estimated degree of sparsity observed depends on the experimental stimuli defined and will vary across neural areas. Moreover the neural sampling methodology employed bias our considerations, since techniques capable of capturing the separated neural activity in complete neural populations are still not completely developed.
+
+
+
+
 \section{The superposition principle interpretation with Bold-fMRI}
 % review the problem of binding from a connectionist perspective with Smolensky tensors
 
