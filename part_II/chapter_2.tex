@@ -296,12 +296,26 @@ The diagonal represents the classification accuracy of the different pseudowords
 \end{figure}
 
 
-\paragraph{Segregation of syllable position representations:}
+\paragraph{Partition of syllable position representations:}
 We also tested the sparsity of position related representations, which should be fulfilled at least in visual areas due to the hemispheric separation of syllable positions given by retinotopy.
-Independently of the possible superposed nature of representations, position encodings could be completely distributed across all voxels or segregated as in the retinotopic case.
-Testing the segregation of representations is interesting for the Smolensky's framework that propose the possibility of completely distributed representations.
-From the best feature (voxel) coefficients of the linear classifiers of the first position and second position syllables we can get an idea of the level of segregation of information in the voxels.
-Since a similar subset of voxels is included in both classifiers, we would expect an statistically extreme overlap of the feature rankings, given by the coefficients, in case of distributed representations, while we would expect less overlap than that given by change in case of segregated representations.
+Independently of the possible superposed nature of representations, position encodings could be completely distributed across all voxels or partitioned as in the retinotopic case.
+Testing the partition of representations is interesting for the Smolensky's framework that propose the possibility of completely distributed representations.
+From the best feature (voxel) coefficients of the linear classifiers of the first position and second position syllables we can get an idea of the level of partition of information in the voxels.
+Since a similar subset of voxels is included in both classifiers, we would expect an statistically extreme overlap of the feature rankings, given by the coefficients, in case of distributed representations, while we would expect less overlap than that given by change in case of partitioned representations.
 We determined the effects of chance by considering the models trained with shuffled labels, from which we determine the distribution of overlap percentage considering the "n" best voxels of both models for all "n".
 An example of the appearance of such a distribution is demonstrated in Figure \ref{fig:segregation_test}
 
+
+\begin{figure}[ht]
+\scriptsize
+\hspace{-4ex}
+\begin{tabular}{cl}
+{\includegraphics[width=0.3\linewidth]{figures/part_II/example_legend2.pdf}}
+\hspace{-1ex}
+&{\includegraphics[width=0.6\linewidth]{figures/part_II/theoretical_example2.png}}
+\hspace{-1ex}\\
+\end{tabular}
+\caption{\textbf{Test for partitioned position representations:}
+The.}
+\label{fig:segregation_test}
+\end{figure}
