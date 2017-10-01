@@ -185,45 +185,48 @@ Statistical images correspond to the anatomical space of each subject.}
 \end{figure*}
 
 
+\section{Visual regions}
 
-\section{Visual representations}
+\subsection{Visual hOc1 region (Primary visual area V1)}
 
-Due to retinotopy and the large size of the text presented in the \emph{Pseudowords matching task}, we expected to be able to decode visual representations and demonstrate superposed representations trivially implied by retinotopy.
+The size of the text presented in the \emph{Pseudowords matching task} allowed us to induce enough sparsity in the voxel activations due to retinotopic mapping.
+Thanks to this we achieved significant classification scores for almost all condition categories in all subjects, with subject 4 having an exemplary performance, distinguishing significantly all conditions in all classifiers.
+We show in Figure \ref{fig:visual_classification} accuracy scores from which chance baseline was substracted for each condition.
+All the classifiers were trained on the visual stimuli and were not able to generalize to auditory stimuli, as would be expected from primary visual areas.
+Significant scores are marked with a star in case of a p-value < 0.05.
+We observe, from the relative area of accuracy above chance, that we could decode syllables in each position and pseudowords best in Subjects 1 and 4.
+Moreover Subject 5, that reported problems with attention, had the worst classifier performance.
 
-As can be seen in Table \ref{table:visual_word_pred}
 
-
-\begin{figure}[ht]
+\hspace{-5ex}
+\begin{figure*}[ht]
 \scriptsize
+\hspace{0ex}
+\begin{tabular}{lccc}
+{} & \textbf{\Large Pseudowords} & \textbf{\Large Syllables in position (F or S)} & \textbf{\Large Confusion cell categories}\\
 \vspace{2ex}
-\includegraphics[width=1.\linewidth]{figures/part_II/confusion_subject_4.png}
-\vspace{3ex}
-\caption{\textbf{Confusion matrices of \emph{Subject 4}:}
-We show }
-\label{fig:visual_confusion}
-\end{figure}
-
-
-\begin{table*}
-\begin{tabular}{lllllllllll}
-\toprule
-Condition &    fifi &    figu &    fina &    gufi &    gugu &    guna &    nafi &    nagu &    nana &    Mean \\
-Subject &         &         &         &         &         &         &         &         &         &         \\
-\midrule
-01      &  0.30** &  0.23** &  0.29** &   0.19* &   0.19* &    0.15 &   0.16* &    0.12 &  0.20** &  0.20** \\
-02      &    0.17 &   0.20* &   0.21* &    0.16 &    0.15 &    0.09 &  0.23** &   0.15* &    0.12 &  0.17** \\
-03      &   0.25* &    0.19 &   0.21* &    0.14 &  0.17** &    0.12 &  0.19** &   0.14* &    0.11 &  0.17** \\
-04      &  0.41** &  0.45** &  0.44** &  0.31** &  0.31** &  0.35** &  0.39** &  0.33** &  0.24** &  0.36** \\
-05      &   0.20* &  0.23** &    0.16 &    0.14 &  0.20** &   0.16* &   0.15* &    0.14 &    0.11 &  0.17** \\
-\bottomrule
+\hspace{0ex}
+{\includegraphics[width=.07\linewidth]{figures/part_II/subjects_legend.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/visual/radial_word.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/visual/radial_joint.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/visual/super_tests.pdf}}
+\hspace{0ex}
+\\
 \end{tabular}
-\vspace{2ex}
-\caption{\textbf{Classification of left and right button press maps of \emph{Pseudoword matching task}:} \emph{"V"} corresponds to the Visual modality and \emph{"A"} to the Auditory modality. \emph{"V-A"} corresponds to pooling together both datasets for training and testing.}
-\label{table:visual_word_pred}
-\end{table*}
+% \vspace{2ex}
+\fullcaption{\textbf{Confusion matrix analysis in visual regions:}
+Chance baseline has been substracted from all accuracy scores. Chance is 11.11\% for pseudoword conditions and 33.33\% for positioned syllable conditions. We show at the left the accuracy for each of the conditions in the pseudoword classifier. At the center we show accuracy for the classifiers of first (F) and second (S) position syllables. The accuracy score points are denoted with stars whenever they are significant. At the right we show the mean confusion value of three types of cells (Overlap categories) in the pseudoword classifier confusion matrix. First those that represent confusion between conditions that have overlapping syllables in a position. Second those between conditions that share syllables in different positions. Third those between conditions that share no syllables. The mean confusion values are denoted with stars whenever they are significant. Black stars on top of the lines connecting overlap category values represent significant differences between them. Significance represents a p-value < 0.05 derived from the shuffled models}
+\label{fig:visual_classification}
+\end{figure*}
+% \vspace{-1ex}
 
-\vspace{30ex}
-\blankfootnote{\emph{chance: 50\% \\ * : p < 10e-2,\\ ** : p < 10e-3,\\ *** : p < 10e-4 \\}}
+
+We also observe in Figure \ref{fig:visual_classification}, patterns of superposed representations from the mean confusion of the different confusion matrix cell groups explained in Methods section \ref{sec:methods_structural}.
+In general all subjects show a pattern with higher confusion values for conditions with position overlapping syllables.
+Subjects 1 and 4 portray strong evidence for superposition, since they have a significant decrease of confusion between pseudoword categories that have a crossed or no syllable overlap, leading to a significant difference between the mean confusion values.
 
 
 \begin{figure*}[ht]
@@ -244,43 +247,288 @@ Subject &         &         &         &         &         &         &         & 
 \hspace{-1ex} \\
 \end{tabular}
 \vspace{3ex}
-\caption{\textbf{Partitioned spatial distribution of visual representations:} We show }
+\caption{\textbf{Partitioned position representations in visual regions:}
+We show in black the overlap of the "n" best voxels selected by the two syllable position classifiers. In red we show the overlap distribution given by the shuffled models. In green we denote segments of significantly inferior overlap with a p-value < 0.05 with respect to the shuffled distribution.}
 \label{fig:visual_locality}
 \end{figure*}
 
 
-\begin{table*}
-\begin{tabular}{llllllllll}
-\toprule
-Test & Relatedness &          &        & No roles &         &        & Superposition &          &         \\
-Overlap &        Diff & Position &   None &     Diff & Crossed &   None &          Diff & Position & Crossed \\
-Subject &             &          &        &          &         &        &               &          &         \\
-\midrule
-01      &       0.018 &    0.115 &  0.097 &   -0.046 &   0.052 &  0.097 &       0.063** &    0.115 &   0.052 \\
-02      &       0.000 &    0.000 &  0.000 &    0.000 &   0.000 &  0.000 &         0.023 &    0.110 &   0.088 \\
-03      &       0.003 &    0.109 &  0.106 &    0.006 &   0.112 &  0.106 &        -0.003 &    0.109 &   0.112 \\
-04      &     0.064** &    0.117 &  0.053 &   -0.018 &   0.035 &  0.053 &       0.082** &    0.117 &   0.035 \\
-05      &       0.011 &    0.098 &  0.088 &    0.031 &   0.119 &  0.088 &        -0.020 &    0.098 &   0.119 \\
-\bottomrule
+As would be expected from the hemispheric projection of retinotopic representations, we observe in Figure \ref{fig:visual_locality} significant patterns of partitioned position representations in all Subjects except Subject 5.
+This means that the best voxels overlap of the two syllable position classifiers, given by the coefficient weights of the classifers, was less than chance for several number of "n" best voxels.
+The pattern is best represented by Subject 4 that had the most accurate models.
+
+
+\subsection{The Visual Word Form Area (VWFA)}
+
+A special case of visual regions that is also part of the language system is the Visual Word Form Area.
+Contrary to other language regions in which we would expect abstract amodal representations, the VWFA receives its name for its capacity to recognize letters and digits during reading, so we analyzed classifiers in this region trained only on visual stimuli.
+We observed that no Subject has significant accuracy scores across all conditions in any classifier, as can be seen in Figure \ref{fig:vwfa_classification}.
+Some positioned syllable classifiers were only significantly accurate for one condition and the syllable "fi" had particularly high accuracy scores in the models of Subjects 1 and 5.
+The classifiers were not able to generalize to auditory stimuli.
+
+Patterns of the confusion cell overlap categories suggest evidence against superposition in this area.
+We observe in the right plot of Figure \ref{fig:vwfa_classification} a constant pattern across all subjects, in which the mean confusion of pseudowords sharing syllables in different positions is higher than those with overlapping syllables in the same position or with no syllable overlap.
+We did not find any significant patterns in favor or against partitioned position representations in any of the Subjects, which can not either be interpreted as evidence for distributed representations.
+
+
+\hspace{-5ex}
+\begin{figure*}[ht]
+\scriptsize
+\hspace{0ex}
+\begin{tabular}{lccc}
+{} & \textbf{\Large Pseudowords} & \textbf{\Large Syllables in position (F or S)} & \textbf{\Large Confusion cell categories}\\
+\vspace{2ex}
+\hspace{0ex}
+{\includegraphics[width=.07\linewidth]{figures/part_II/subjects_legend.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/vwfa/radial_word.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/vwfa/radial_joint.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/vwfa/super_tests.pdf}}
+\hspace{0ex}
+\\
 \end{tabular}
-\vspace{10ex}
-\caption{\textbf{Classification of left and right button press maps of \emph{Pseudoword matching task}:} \emph{"V"} corresponds to the Visual modality and \emph{"A"} to the Auditory modality. \emph{"V-A"} corresponds to pooling together both datasets for training and testing.}
-\label{table:superposition tests}
-\end{table*}
-
-\vspace{40ex}
-\blankfootnote{\emph{chance: 50\% \\ * : p < 10e-2,\\ ** : p < 10e-3,\\ *** : p < 10e-4 \\ Bonferroni corrected for 25 similar tests performed}}
-
+% \vspace{2ex}
+\fullcaption{\textbf{Confusion matrix analysis in VWFA:}
+Chance baseline has been substracted from all accuracy scores. Chance is 11.11\% for pseudoword conditions and 33.33\% for positioned syllable conditions. We show at the left the accuracy for each of the conditions in the pseudoword classifier. At the center we show accuracy for the classifiers of first (F) and second (S) position syllables. The accuracy score points are denoted with stars whenever they are significant. At the right we show the mean confusion value of three types of cells (Overlap categories) in the pseudoword classifier confusion matrix. First those that represent confusion between conditions that have overlapping syllables in a position. Second those between conditions that share syllables in different positions. Third those between conditions that share no syllables. The mean confusion values are denoted with stars whenever they are significant. Black stars on top of the lines connecting overlap category values represent significant differences between them. Significance represents a p-value < 0.05 derived from the shuffled models}
+\label{fig:vwfa_classification}
+\end{figure*}
+% \vspace{-1ex}
 
 
-\section{Auditory representations}
+\section{Auditory Te10 region}
 
 
 
+\hspace{-5ex}
+\begin{figure*}[ht]
+\scriptsize
+\hspace{0ex}
+\begin{tabular}{lccc}
+{} & \textbf{\Large Pseudowords} & \textbf{\Large Syllables in position (F or S)} & \textbf{\Large Confusion cell categories}\\
+\vspace{2ex}
+\hspace{0ex}
+{\includegraphics[width=.07\linewidth]{figures/part_II/subjects_legend.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/auditory/radial_word.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/auditory/radial_joint.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/auditory/super_tests.pdf}}
+\hspace{0ex}
+\\
+\end{tabular}
+% \vspace{2ex}
+\fullcaption{\textbf{Confusion matrix analysis in the Auditory Te10 region:}
+Chance baseline has been substracted from all accuracy scores. Chance is 11.11\% for pseudoword conditions and 33.33\% for positioned syllable conditions. We show at the left the accuracy for each of the conditions in the pseudoword classifier. At the center we show accuracy for the classifiers of first (F) and second (S) position syllables. The accuracy score points are denoted with stars whenever they are significant. At the right we show the mean confusion value of three types of cells (Overlap categories) in the pseudoword classifier confusion matrix. First those that represent confusion between conditions that have overlapping syllables in a position. Second those between conditions that share syllables in different positions. Third those between conditions that share no syllables. The mean confusion values are denoted with stars whenever they are significant. Black stars on top of the lines connecting overlap category values represent significant differences between them. Significance represents a p-value < 0.05 derived from the shuffled models.}
+\label{fig:vwfa_classification}
+\end{figure*}
+% \vspace{-1ex}
+
+
+\section{Language regions}
+
+
+\subsection{Language regions derived from constituency effects (Pallier et al.)}
+
+
+\hspace{-5ex}
+\begin{figure*}[ht]
+\scriptsize
+\hspace{0ex}
+\begin{tabular}{lcccc}
+{} & \textbf{\Large [V] Pseudowords} & \textbf{\Large [A] Pseudowords} & \textbf{\Large [V] Syllables (F or S)} & \textbf{\Large [A] Syllables (F or S)}\\
+\hspace{-4ex}
+{\includegraphics[width=.07\linewidth]{figures/part_II/subjects_legend.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/pSTS/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/pSTS/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/pSTS/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/pSTS/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\hspace{-4ex}
+{}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGorb/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGorb/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGorb/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGorb/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\hspace{-4ex}
+{}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGtri/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGtri/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGtri/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/IFGtri/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\end{tabular}
+% \vspace{2ex}
+\fullcaption{\textbf{Accuracy in syntactic constituency regions:}
+Chance baseline has been substracted from all accuracy scores. Chance is 11.11\% for pseudoword conditions and 33.33\% for positioned syllable conditions. We show at the left the accuracy for each of the conditions in the pseudoword classifier. At the center we show accuracy for the classifiers of first (F) and second (S) position syllables. The accuracy score points are denoted with stars whenever they are significant.}
+\label{fig:vwfa_classification}
+\end{figure*}
+% \vspace{-1ex}
 
 
 
-% \section{Language representations}
+\hspace{-5ex}
+\begin{figure*}[ht]
+\scriptsize
+\hspace{0ex}
+\begin{tabular}{lccc}
+{} & \textbf{\Large Pseudowords} & \textbf{\Large Syllables in position (F or S)} & \textbf{\Large Confusion cell categories}\\
+\vspace{2ex}
+\hspace{0ex}
+{\includegraphics[width=.07\linewidth]{figures/part_II/subjects_legend.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/auditory/radial_word.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/auditory/radial_joint.pdf}}
+\hspace{-3ex}
+&{\includegraphics[width=.3\linewidth]{figures/part_II/roi_plots/auditory/super_tests.pdf}}
+\hspace{0ex}
+\\
+\end{tabular}
+% \vspace{2ex}
+\fullcaption{\textbf{Confusion matrix syllable overlap categories of syntactic constituency regions:}
+We show the mean confusion value of three types of cells (Overlap categories) in the pseudoword classifier confusion matrix. First those that represent confusion between conditions that have overlapping syllables in a position. Second those between conditions that share syllables in different positions. Third those between conditions that share no syllables. The mean confusion values are denoted with stars whenever they are significant. Black stars on top of the lines connecting overlap category values represent significant differences between them. Significance represents a p-value < 0.05 derived from the shuffled models.}
+\label{fig:vwfa_classification}
+\end{figure*}
+% \vspace{-1ex}
+
+
+
+
+
+\hspace{-5ex}
+\begin{figure*}[ht]
+\scriptsize
+\hspace{0ex}
+\begin{tabular}{lcccc}
+{} & \textbf{\Large [V] Pseudowords} & \textbf{\Large [A] Pseudowords} & \textbf{\Large [V] Syllables (F or S)} & \textbf{\Large [A] Syllables (F or S)}\\
+\hspace{-4ex}
+{\includegraphics[width=.07\linewidth]{figures/part_II/subjects_legend.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/aSTS/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/aSTS/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/aSTS/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/aSTS/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\hspace{-4ex}
+{}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TP/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TP/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TP/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TP/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\hspace{-4ex}
+{}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TPJ/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TPJ/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TPJ/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/TPJ/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\end{tabular}
+% \vspace{2ex}
+\fullcaption{\textbf{Accuracy in semantic constituency regions:}
+Chance baseline has been substracted from all accuracy scores. Chance is 11.11\% for pseudoword conditions and 33.33\% for positioned syllable conditions. We show at the left the accuracy for each of the conditions in the pseudoword classifier. At the center we show accuracy for the classifiers of first (F) and second (S) position syllables. The accuracy score points are denoted with stars whenever they are significant.}
+\label{fig:vwfa_classification}
+\end{figure*}
+% \vspace{-1ex}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Broca 44 and 45}
+
+
+\hspace{-5ex}
+\begin{figure*}[ht]
+\scriptsize
+\hspace{0ex}
+\begin{tabular}{lcccc}
+{} & \textbf{\Large [V] Pseudowords} & \textbf{\Large [A] Pseudowords} & \textbf{\Large [V] Syllables (F or S)} & \textbf{\Large [A] Syllables (F or S)}\\
+\vspace{2ex}
+\hspace{-4ex}
+{\includegraphics[width=.07\linewidth]{figures/part_II/subjects_legend.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca44/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca44/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca44/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca44/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\hspace{-4ex}
+{}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca45/Vis/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca45/Aud/radial_word.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca45/Vis/radial_joint.pdf}}
+\hspace{-4ex}
+&{\includegraphics[width=.23\linewidth]{figures/part_II/roi_plots/Broca45/Aud/radial_joint.pdf}}
+\hspace{-4ex}
+\\
+\end{tabular}
+% \vspace{2ex}
+\fullcaption{\textbf{Conditions accuracy in Broca 44 and 45:}
+Chance baseline has been substracted from all accuracy scores. Chance is 11.11\% for pseudoword conditions and 33.33\% for positioned syllable conditions. We show at the left the accuracy for each of the conditions in the pseudoword classifier. At the center we show accuracy for the classifiers of first (F) and second (S) position syllables. The accuracy score points are denoted with stars whenever they are significant.}
+\label{fig:vwfa_classification}
+\end{figure*}
+% \vspace{-1ex}
+
+
+
+
+% \begin{figure}[ht]
+% \scriptsize
+% \vspace{2ex}
+% \includegraphics[width=1.\linewidth]{figures/part_II/confusion_subject_4.png}
+% \vspace{3ex}
+% \caption{\textbf{Confusion matrices of \emph{Subject 4}:}
+% We show }
+% \label{fig:visual_confusion}
+% \end{figure}
+
 
 
 % \paragraph{\emph{Pseudoword matching task} effects:}

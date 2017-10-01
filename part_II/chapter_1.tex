@@ -13,191 +13,191 @@ In this chapter we introduce .
 \paragraph{Final considerations of the tensor framework (link to introduction):}
 
 
-Consideration 1: The superposition principle.
+% Consideration 1: The superposition principle.
 
-The neural activation of a structure S is defined as the sum of the components/fillers "f" of the structure ("f" however defined for the given stimuli) binded to the roles "r" that those components play in the structure ("r" however defined for the given stimuli). Smolensky assumes the linear operation of addition in his tensor product framework to accumulate the activation contribution of the different fillers binded to their respective roles, this is the superposition principle. This assumption leads to predictions like AB-AC = DB-DC since for example $[(AxR1) + (BxR2)] - [(AxR1) + (CxR2)] = [(BxR2) - (CxR2)]$.
+% The neural activation of a structure S is defined as the sum of the components/fillers "f" of the structure ("f" however defined for the given stimuli) binded to the roles "r" that those components play in the structure ("r" however defined for the given stimuli). Smolensky assumes the linear operation of addition in his tensor product framework to accumulate the activation contribution of the different fillers binded to their respective roles, this is the superposition principle. This assumption leads to predictions like AB-AC = DB-DC since for example $[(AxR1) + (BxR2)] - [(AxR1) + (CxR2)] = [(BxR2) - (CxR2)]$.
 
-Consideration 2: Linear independence considerations
+% Consideration 2: Linear independence considerations
 
-Smolensky assumes that the vector set describing the neural activation contribution of the fillers are linearly independent and assumes the same for the vector set of the roles. Nonetheless there is no constraint on how the set of filler vectors and the set of role vectors are with respect to each other.
+% Smolensky assumes that the vector set describing the neural activation contribution of the fillers are linearly independent and assumes the same for the vector set of the roles. Nonetheless there is no constraint on how the set of filler vectors and the set of role vectors are with respect to each other.
 
-The linear independence is not a strict demand, since there is a graceful degradation as the correlation between vectors increases when linear independence is lost on a distributed representation. Moreover this assumption is only important in the case we were planning to perform unbinding operations to extract unknown filler or role vectors from known role or filler vectors respectively.
+% The linear independence is not a strict demand, since there is a graceful degradation as the correlation between vectors increases when linear independence is lost on a distributed representation. Moreover this assumption is only important in the case we were planning to perform unbinding operations to extract unknown filler or role vectors from known role or filler vectors respectively.
 
-So we would not bother with this assumption with BOLD-fMRI techniques if we think the activation vector components to be directly related to neurons. But if the components of the activation vector is related to the average activity of neural populations (catured in voxels) then linear independence of the whole brain related vectors becomes relevant. Although defining the set of voxels that can be assumed to form the vector becomes another problem.
+% So we would not bother with this assumption with BOLD-fMRI techniques if we think the activation vector components to be directly related to neurons. But if the components of the activation vector is related to the average activity of neural populations (catured in voxels) then linear independence of the whole brain related vectors becomes relevant. Although defining the set of voxels that can be assumed to form the vector becomes another problem.
 
-Consideration 3: Distributed representation
+% Consideration 3: Distributed representation
 
-Smolensky tensor product framework assumes the possibility of distributed representations. The tensor product itself reflect this principle as the activation of a neural unit (component of the neural vector) is given by Sum(fi x ri).
+% Smolensky tensor product framework assumes the possibility of distributed representations. The tensor product itself reflect this principle as the activation of a neural unit (component of the neural vector) is given by Sum(fi x ri).
 
-From the neurobiological point of view, it seems likely that there are distributed representation when we are able to find with coarse random sampling neurons tuned to specific experimental stimuli. Consider for example the work by \citep{allman_stimulus_1985}, that characterizes the receptive field of a set of sampled neurons to moving dots.
+% From the neurobiological point of view, it seems likely that there are distributed representation when we are able to find with coarse random sampling neurons tuned to specific experimental stimuli. Consider for example the work by \citep{allman_stimulus_1985}, that characterizes the receptive field of a set of sampled neurons to moving dots.
 
-Consideration 4: Sparsed representation
+% Consideration 4: Sparsed representation
 
-Smolensky tensor product framework do not motivate in itself the necessity of sparsed representations, but allow it as a special case of distributed representations.
+% Smolensky tensor product framework do not motivate in itself the necessity of sparsed representations, but allow it as a special case of distributed representations.
 
-From the neurobiological point of view, it seems likely that there is certain degree of sparsity. \citep{olshausen_emergence_1996} for example shows how a coding strategy that maximizes sparseness is sufficient to account for important properties of the mammalian primary visual cortex, which are considered to be spatially localized, oriented and bandpass, comparable to the basis functions of wavelet transforms.
+% From the neurobiological point of view, it seems likely that there is certain degree of sparsity. \citep{olshausen_emergence_1996} for example shows how a coding strategy that maximizes sparseness is sufficient to account for important properties of the mammalian primary visual cortex, which are considered to be spatially localized, oriented and bandpass, comparable to the basis functions of wavelet transforms.
 
-In the neuroscientific literature the actual degree of sparseness related to neural representations is still debated, sometimes even only one neuron is found to be responsive to very specific stimuli, giving rise to the hypothesis of grandmother cells. An interesting debate on this account is presented by \citep{bowers_biological_2009}. Nonetheless the estimated degree of sparsity observed depends on the experimental stimuli defined and will vary across neural areas. Moreover the neural sampling methodology employed bias our considerations, since techniques capable of capturing the separated neural activity in complete neural populations are still not completely developed.
-
-
+% In the neuroscientific literature the actual degree of sparseness related to neural representations is still debated, sometimes even only one neuron is found to be responsive to very specific stimuli, giving rise to the hypothesis of grandmother cells. An interesting debate on this account is presented by \citep{bowers_biological_2009}. Nonetheless the estimated degree of sparsity observed depends on the experimental stimuli defined and will vary across neural areas. Moreover the neural sampling methodology employed bias our considerations, since techniques capable of capturing the separated neural activity in complete neural populations are still not completely developed.
 
 
-\section{The superposition principle interpretation with Bold-fMRI}
-% review the problem of binding from a connectionist perspective with Smolensky tensors
-
- Consideration 5: Inferring neural multi unit activity from the BOLD hemodynamic response.
-
-Smolensky interpretation of the tensor products as generating patterns reflecting directly some kind of neural activation measure, raises the need to consider if its possible to interpret the BOLD signal in terms of neural activations and how.
-
- About the spatial correspondance between the BOLD signal and neural activity.
-
-Recently\citep{siero_bold_2014} studied the spatial properties of the hemodynamic (BOLD) signal at 7T and reconfirms its spatial correspondence with neural activity (ECOG) patterns in the motor cortex for a finger tapping task. \citep{siero_bold_2014} manages to decode spatially the tapping of different fingers and finds that the spatial correlation between signals for the different fingers is high (on average R=0.54) and their maxima co-localized within 3mm distance.
-
-% ![Spatial activity of finger tapping resported by Siero et al](images/siero_finger_spatial_activity.png)
-
-% ![ECOG-BOLD comparison by Siero et al](images/siero_ecog_bold_correspondence.png)
-
- About the types of neural activity reflected in the BOLD signal. Can we accept a neural interpretation of hemodynamic activity?
-
-\citep{logothetis_neurophysiological_2001} showed already in 2001 the correspondence between neural (MUA and LFP) and hemodynamic (BOLD) responses for visual stimuli (polar-transformed chequerboard patterns rotating at 60+-180 degrees per s) in the visual cortex of monkeys.
-
-He showed that the measured LFP and MUA have a linear mapping to the BOLD  response and that all the responses where nonlinear with respect to the  stimulus level of contrast.
-
-% ![Logothetis exploration of MUA and BOLD](images/logothetis_mua_bold_report.png)
-
-% ![Logothetis shows nonlinear response to contrast and linear mapping between neural and hemodynamic response](images/logothetis_mua_bold_linearmapping.png)
-
-He also provided an account for the degree to  which the estimated impulse response of neural signals could account for the  BOLD signal. For shorter stimuli duration (4s) the R squared was quite high for LFP  (0.905) and MUA (0.769), nonetheless as the stimuli duration is increased, the determination coefficient decrease rapidly. Still for average R squared LFP (0.521) performs better than MUA (0.476).
-
-% ![Logothetis shows model performance for BOLD estimation from MUA-LFP](images/logothetis_mua_bold_correlation.png)
-
-Interestingly \citep{logothetis_neurophysiological_2001}, due to his relative observations between MUA and LFP, suggest that the BOLD signal is more likely to reflect neural input and synaptic activity than neural output.
-
-I quote:
-
-"Both the spike-density function, representing a neuron's instantaneous firing rate, and the MUA show strong adaptation, returning to the baseline around 2.5 s after stimulus onset. In contrast, the activity underlying the LFPs remains elevated for the duration of the visual stimulus. There was no single observation period or recording site for which the opposite result was observed, namely a highly correlated MUA signal and an uncorrelated or missing LFP signal. Similarly at no time did we observe MUA that was larger in magnitude or signal-to-noise ratio than the measured LFP activity. These findings suggest that BOLD activation may actually reflect more the neural activity related to the input and the local processing in any given area, rather than the spiking activity commonly thought of as the output of the area."
-
-Supporting Logothetis claims, \citep{martindale_hemodynamic_2003} shows how the aggregated neural activity (LFP) has a linear mapping into the hemodynamic response (CBV) in the somatosensory cortex of rats for different frequencies of paw pulse stimulation. Nonetheless he also showed that one has to be careful as paired stimuli did not show such linear mapping.
-
-% ![Linear mapping of neural activity into CBV for frequency stimuli](images/martindale_linear_mapping_frequency.png)
-
-% ![Non Linear mapping of neural activity into CBV for paired stimuli](images/martindale_nonlinear_mapping_paired.png)
-
-Later, \citep{cardoso_neuroimaging_2012} reports a model predicting hemodynamic response (BVC) out of neural (MUA and LFP) activity for a visual stimuli (drifting sine-wave gratings that were presented passively while the animal fixated, with log2 contrast differences), presented for 3-4s to monkeys. Initially as expected from Logothetis observations, \citep{cardoso_neuroimaging_2012} gets a low R square (0.49) for a model that predicts the hemodynamic respons from the MUA activity. Nonetheless after an extension of the model, its R squared (0.94) improves importantly.
-
-% ![Cardoso initial MUA poor prediction of hemodynamic response](images/cardoso_initial_prediction.png)
-
-The important addition to their model is to account for a hemodynamic component temporally locked to the stimuli onset but not dependent on the local neural activity evoked by the stimuli, which \citep{cardoso_neuroimaging_2012} calls the trial related component. This suggest the importance of going beyond rest periods and include empty trials when possible.
-
-Contrary to Logothetis, he actually found the LFP signal to give similar results to the MUA signal and to be even less capable of explaining the hemodynamic response. This contradicts the interpretation of the hemodynamic response mostly in terms of neural input and synaptic activity and bring us back to a possible neural output interpretation.
-
- Why we deviate from the neural output interpretation in BOLD when MUA activity predicts CBV?
-
-There is an important difference between the hemodynamic signal measured by \citep{logothetis_neurophysiological_2001} and by \citep{cardoso_neuroimaging_2012}. The BOLD signal is more complex and depends on the coupling between CBV, CBF and CMRO2. The fact that \citep{cardoso_neuroimaging_2012} only shows a linear mapping between the MUA and the CBV leaves open the possibility that the CBF and CMRO2 coupling might distort the mapping between neural activity and the hemodynamic BOLD response.
-
-Effectively \citep{toyoda_source_2008} shows that the contribution of the oxygen extraction fraction (OEF), which is related to CMRO2, is greater than the contribution that can be attributed to the CBV under the range of plausible parameters of neural activity and adaptation to a checkerboard visual stimuli of a durations between 1 and 8 seconds, estimating it to be four to seven times greater. Also the contribution ratio of OEF over CBV decreases as the duration of the stimuli increases, which suggest the presence of a strong saturation effect in the OEF contribution. Another important factor exposed by \citep{toyoda_source_2008} is that beyond the idea of the OEF being the main source of nonlinearity in the BOLD signal, the actual degree of such nonlinearity is a function also of the neural adaptation parameters considered. Moreover this effect presents a challenge for the interpretation of the BOLD signal in terms of neural activations, since the saturation effect creates an extra nonlinearity driven by the neural activation besides that already related to stimuli features.
-
->Terms and tips to interpret Toyoda et al
-
->OEF: oxygen extraction fraction  
-HbR:concentration of deoxyhemoglobin
-HbO:concentration of oxyhemoglobin  
-HbT: is the sum of changes in HbO and HbR  
-The HbT is considered to interpret CBV
-
->- OEF is defined based on the arterial and venous blood oxygenation levels as 1 - Ya/Yv  
-- Total blood oxygenation is Yt = HbO/HbT = 1 - HbR/HbT  
-- The baseline normalized OEF (e) would be (baseline normalized HbR)/(baseline normalized HbT)  
-- 'q' is baseline normalized HbR  
-- 'v' is baseline normalized HbT after some extra assumptions.
-
->Consider that neural adaptation parameters and baseline values for HbT and Yt are simulated considering the complete interval given by the physiological plausible values given by the literature
-
-% ![Toyoda et al model for the BOLD nonlinearity estimation](images/toyoda_bold_nonlinearity_estimation.png)
-
-% ![Toyoda et al nonlinearity estimation for different signals and adaptation parameters](images/toyoda_sni_estimation.png)
 
 
-Going further, \citep{moradi_adaptation_2013} shows the relationship between CBF and CMRO2 that can account for adaptation effects in the BOLD signal. When contrasting a continuous 45s presentation and an intermittent 45s presentation (7.58s stimulations) of a visual checkerboard pattern stimulation, \citep{moradi_adaptation_2013} estimates the CMRO2 adaptation to be importantly bigger than the CBF adaptation effect in such a way that the CMRO2 effect manages to compensate the CBF effect on the BOLD signal, that do not present the strong adaptation effect.
+% \section{The superposition principle interpretation with Bold-fMRI}
+% % review the problem of binding from a connectionist perspective with Smolensky tensors
 
-% ![Moradi et al report of signals adaptation](images/moradi_adaptation_signals.png)
+%  Consideration 5: Inferring neural multi unit activity from the BOLD hemodynamic response.
 
-It is interesting to appreciate the complexity of the interaction of the CMRO2 and CBF signal at long stimuli durations as shown by \citep{moradi_adaptation_2013}, but more important is to notice that the BOLD signal failed to show a strong adaptation effect. This could be explained by the experimental manipulations of \citep{soltysik_comparison_2004}, where different primary sensory areas show different BOLD nonlinear-linear transition thresholds as a function of stimuli duration. The results of \citep{soltysik_comparison_2004} also emphasize a spatial heterogeneity of nonlinear responses across the brain and are supported by previous research conducted by \citep{birn_spatial_2001}. 
+% Smolensky interpretation of the tensor products as generating patterns reflecting directly some kind of neural activation measure, raises the need to consider if its possible to interpret the BOLD signal in terms of neural activations and how.
 
-More recently \citep{devonshire_neurovascular_2012} shows with more detail how the coupling between neuronal activity (MUA and LFP) and hemodynamic response (BOLD) changes with brain region on the rat. He reconfirms a linear mapping of MUA activity and BOLD signal in regions inside and outside of the cortex for electrical stimulation of the entire whisker pad on the left of the rat's snout during 40s with different pulse frequencies. Nonetheless the mapping have a different slope in different brain regions and in the case of LFP there is a nonlinear mapping to BOLD responses outside of the cortex (in the brainstem).
+%  About the spatial correspondance between the BOLD signal and neural activity.
 
-% ![Neurovascular coupling shown by Devonshire](images/devonshire_neurovascular_coupling.png)
+% Recently\citep{siero_bold_2014} studied the spatial properties of the hemodynamic (BOLD) signal at 7T and reconfirms its spatial correspondence with neural activity (ECOG) patterns in the motor cortex for a finger tapping task. \citep{siero_bold_2014} manages to decode spatially the tapping of different fingers and finds that the spatial correlation between signals for the different fingers is high (on average R=0.54) and their maxima co-localized within 3mm distance.
 
-\citep{devonshire_neurovascular_2012} summarizes nicely the vision presented in the literature on the topic of neurovascular coupling. I quote:
->Early studies suggested that the BOLD signal could be predicted by
-convolving neural activity with a linear time-invariant system (Ances
-et al., 2000; Boynton et al., 1996; Dale and Buckner, 1997). However,
-not all studies have found linear relationships between direct neural
-recordings and haemodynamic or metabolic responses (Devor et al.,
-2003; Hewson-Stoate et al., 2005; Hoffmeyer et al., 2007; Jones
-et al., 2004; Sheth et al., 2004). Such relationships have been the
-focus of much research over the past fifteen years and a consensus
-is now emerging that, at least in the cortex, a linear relationship char-
-acterises response dynamics (Arthurs and Boniface, 2003; Arthurs
-et al., 2000; Brinker et al., 1999; Heeger et al., 2000; Lauritzen,
-2001; Martindale et al., 2003; Nangini et al., 2008; Ngai et al., 1999;
-Ou et al., 2009; Rees et al., 2000; Sheth et al., 2003; Smith et al.,
-2002; Ureshi et al., 2004). Note, however, that important exceptions
-exist in the literature but these are most often found only under spe-
-cific experimental conditions: non-linear relationships are often
-found when sensory stimuli used are of a short-duration, in which a
-CBF overshoot is disproportionately high compared to long-duration
-stimuli (Ances et al., 2000; Soltysik et al., 2004; Vazquez and Noll,
-1998) (but see (Yesilyurt et al., 2008)) or are of a low-intensity that
-do not cross a required neural threshold to evoke a haemodynamic re-
-sponse (Vazquez and Noll, 1998). In accordance with these findings,
-we show that neurovascular coupling in the cortex obeys a linear rela-
-tionship when neural activity is triggered by long-duration sensory
-stimuli and modulated by altering stimulation frequency, as opposed
-to intensity. We also find BOLD responses to be equally well pre-
-dicted by MUA as by LFP responses in the cortex, as the absolute
-integral of both electrophysiological measures undergo similar,
-monotonic rises with increasing stimulation frequencies. Note that
-the cortical MUA data exhibits a negative BOLD (y axis) intercept
-suggesting that a minimum threshold of spiking is required before
-a BOLD response is triggered. Excluding the LFP-BOLD relationship
-in the thalamus (discussed below), no other structure or modality
-exhibits a non-zero y-intercept. This suggests that, under the experi-
-mental conditions used in the current study, neural activity in the
-cortex below a certain threshold would not be detected (c.f. (Zhang
-et al., 2008)).
-The close relationship between cortical MUA and LFPs, highlighted
-above, is often reported in the literature (Jones et al., 2004) as is the
-close relationship between these measures and cortical BOLD signals
-(Hewson-Stoate et al., 2005; Jones et al., 2004), but there are excep-
-tions (Logothetis et al., 2001). Poor correlations between spiking
-and synaptic activity can arise for a number of reasons (see below),
-but in the cortex a major factor is state-dependent adaptation (Kim
-et al., 2010). As firing thresholds are known to alter according to
-arousal state (McCormick and Bal, 1997), this provides a further
-layer of complexity to neurovascular coupling and is an issue being
-actively investigated (Jones et al., 2008; Masamoto et al., 2009).
+% % ![Spatial activity of finger tapping resported by Siero et al](images/siero_finger_spatial_activity.png)
 
-Even though the linear mapping from neural activity to hemodynamics seem to hold only at long stimuli durations, \citep{tang_nonlinear_2009} shows that by taking into account and adapting current neurovascular models (the Balloon model) it is possible to relate CBV responses (from spectroscopy), that are reported to follow closely neural activity, to BOLD for lower stimuli durations (1,2,3,4,6 and 8s).
+% % ![ECOG-BOLD comparison by Siero et al](images/siero_ecog_bold_correspondence.png)
 
-% ![Tang et al CBV-BOLD coupling](images/tang_cbv_bold_coupling.png)
+%  About the types of neural activity reflected in the BOLD signal. Can we accept a neural interpretation of hemodynamic activity?
 
- Interpretation for new experimental designs.
+% \citep{logothetis_neurophysiological_2001} showed already in 2001 the correspondence between neural (MUA and LFP) and hemodynamic (BOLD) responses for visual stimuli (polar-transformed chequerboard patterns rotating at 60+-180 degrees per s) in the visual cortex of monkeys.
 
-All the presented results suggest that for short duration stimuli it is important to account for the BOLD nonlinearities due to the CBF and CMRO2 (OEF)contributions in order to be able to relate the signal with neural activation. Moreover it is important to account for this effect across the whole brain, since different brain regions will present different neurovascular couplings and heterogenous nonlinearities. Without accounting for this it would not be possible to model linear differences in neural activations between stimuli, since this differences will be deformed by the nonlinear response of the OEF that masks the CBV contribution to the BOLD. Moreover we have to be very careful of temporal interactions between stimuli. The ISI is a crucial factor to tune to avoid additional nonlinearities on the BOLD that would distort our interpretation of the underlying neural activity.
+% He showed that the measured LFP and MUA have a linear mapping to the BOLD  response and that all the responses where nonlinear with respect to the  stimulus level of contrast.
 
- final remarks on the neural interpretation of the BOLD signal.
+% % ![Logothetis exploration of MUA and BOLD](images/logothetis_mua_bold_report.png)
 
-General remarks:
-- We can think of the BOLD signal in terms of neural activation but with great caution. The mean spiking rate (MUA considerations) might not always be the best depiction of the underlying neural activity, but is shown to have a linear mapping to hemodynamics in many circumstances.
-- The BOLD signal have a clear spatial correspondence with neural activity, but we can not interpret neural population activation levels directly between regions.
-- We have to be careful in case of comparing stimuli with different durations. Have to be very careful on the ISI when dealing with short stimulations.
-- Having access to CBV and CBF signals would greatly enhance our neural activation interpretation of the BOLD signal.
+% % ![Logothetis shows nonlinear response to contrast and linear mapping between neural and hemodynamic response](images/logothetis_mua_bold_linearmapping.png)
 
-Experiment related remarks:
-- Seems like we need longer stimulation to relate BOLD to neural activations. Moreover how long depends on the brain region that we want to consider.
-- If we consider short duration stimuli then it would be important to have some way to assess the nonlinear neurovascular coupling.
-- We should think carefully about the inclusion of empty trials in the experimental design. It made a great difference in the fit of neural activations to the hemodynamic response.
+% He also provided an account for the degree to  which the estimated impulse response of neural signals could account for the  BOLD signal. For shorter stimuli duration (4s) the R squared was quite high for LFP  (0.905) and MUA (0.769), nonetheless as the stimuli duration is increased, the determination coefficient decrease rapidly. Still for average R squared LFP (0.521) performs better than MUA (0.476).
+
+% % ![Logothetis shows model performance for BOLD estimation from MUA-LFP](images/logothetis_mua_bold_correlation.png)
+
+% Interestingly \citep{logothetis_neurophysiological_2001}, due to his relative observations between MUA and LFP, suggest that the BOLD signal is more likely to reflect neural input and synaptic activity than neural output.
+
+% I quote:
+
+% "Both the spike-density function, representing a neuron's instantaneous firing rate, and the MUA show strong adaptation, returning to the baseline around 2.5 s after stimulus onset. In contrast, the activity underlying the LFPs remains elevated for the duration of the visual stimulus. There was no single observation period or recording site for which the opposite result was observed, namely a highly correlated MUA signal and an uncorrelated or missing LFP signal. Similarly at no time did we observe MUA that was larger in magnitude or signal-to-noise ratio than the measured LFP activity. These findings suggest that BOLD activation may actually reflect more the neural activity related to the input and the local processing in any given area, rather than the spiking activity commonly thought of as the output of the area."
+
+% Supporting Logothetis claims, \citep{martindale_hemodynamic_2003} shows how the aggregated neural activity (LFP) has a linear mapping into the hemodynamic response (CBV) in the somatosensory cortex of rats for different frequencies of paw pulse stimulation. Nonetheless he also showed that one has to be careful as paired stimuli did not show such linear mapping.
+
+% % ![Linear mapping of neural activity into CBV for frequency stimuli](images/martindale_linear_mapping_frequency.png)
+
+% % ![Non Linear mapping of neural activity into CBV for paired stimuli](images/martindale_nonlinear_mapping_paired.png)
+
+% Later, \citep{cardoso_neuroimaging_2012} reports a model predicting hemodynamic response (BVC) out of neural (MUA and LFP) activity for a visual stimuli (drifting sine-wave gratings that were presented passively while the animal fixated, with log2 contrast differences), presented for 3-4s to monkeys. Initially as expected from Logothetis observations, \citep{cardoso_neuroimaging_2012} gets a low R square (0.49) for a model that predicts the hemodynamic respons from the MUA activity. Nonetheless after an extension of the model, its R squared (0.94) improves importantly.
+
+% % ![Cardoso initial MUA poor prediction of hemodynamic response](images/cardoso_initial_prediction.png)
+
+% The important addition to their model is to account for a hemodynamic component temporally locked to the stimuli onset but not dependent on the local neural activity evoked by the stimuli, which \citep{cardoso_neuroimaging_2012} calls the trial related component. This suggest the importance of going beyond rest periods and include empty trials when possible.
+
+% Contrary to Logothetis, he actually found the LFP signal to give similar results to the MUA signal and to be even less capable of explaining the hemodynamic response. This contradicts the interpretation of the hemodynamic response mostly in terms of neural input and synaptic activity and bring us back to a possible neural output interpretation.
+
+%  Why we deviate from the neural output interpretation in BOLD when MUA activity predicts CBV?
+
+% There is an important difference between the hemodynamic signal measured by \citep{logothetis_neurophysiological_2001} and by \citep{cardoso_neuroimaging_2012}. The BOLD signal is more complex and depends on the coupling between CBV, CBF and CMRO2. The fact that \citep{cardoso_neuroimaging_2012} only shows a linear mapping between the MUA and the CBV leaves open the possibility that the CBF and CMRO2 coupling might distort the mapping between neural activity and the hemodynamic BOLD response.
+
+% Effectively \citep{toyoda_source_2008} shows that the contribution of the oxygen extraction fraction (OEF), which is related to CMRO2, is greater than the contribution that can be attributed to the CBV under the range of plausible parameters of neural activity and adaptation to a checkerboard visual stimuli of a durations between 1 and 8 seconds, estimating it to be four to seven times greater. Also the contribution ratio of OEF over CBV decreases as the duration of the stimuli increases, which suggest the presence of a strong saturation effect in the OEF contribution. Another important factor exposed by \citep{toyoda_source_2008} is that beyond the idea of the OEF being the main source of nonlinearity in the BOLD signal, the actual degree of such nonlinearity is a function also of the neural adaptation parameters considered. Moreover this effect presents a challenge for the interpretation of the BOLD signal in terms of neural activations, since the saturation effect creates an extra nonlinearity driven by the neural activation besides that already related to stimuli features.
+
+% >Terms and tips to interpret Toyoda et al
+
+% >OEF: oxygen extraction fraction  
+% HbR:concentration of deoxyhemoglobin
+% HbO:concentration of oxyhemoglobin  
+% HbT: is the sum of changes in HbO and HbR  
+% The HbT is considered to interpret CBV
+
+% >- OEF is defined based on the arterial and venous blood oxygenation levels as 1 - Ya/Yv  
+% - Total blood oxygenation is Yt = HbO/HbT = 1 - HbR/HbT  
+% - The baseline normalized OEF (e) would be (baseline normalized HbR)/(baseline normalized HbT)  
+% - 'q' is baseline normalized HbR  
+% - 'v' is baseline normalized HbT after some extra assumptions.
+
+% >Consider that neural adaptation parameters and baseline values for HbT and Yt are simulated considering the complete interval given by the physiological plausible values given by the literature
+
+% % ![Toyoda et al model for the BOLD nonlinearity estimation](images/toyoda_bold_nonlinearity_estimation.png)
+
+% % ![Toyoda et al nonlinearity estimation for different signals and adaptation parameters](images/toyoda_sni_estimation.png)
+
+
+% Going further, \citep{moradi_adaptation_2013} shows the relationship between CBF and CMRO2 that can account for adaptation effects in the BOLD signal. When contrasting a continuous 45s presentation and an intermittent 45s presentation (7.58s stimulations) of a visual checkerboard pattern stimulation, \citep{moradi_adaptation_2013} estimates the CMRO2 adaptation to be importantly bigger than the CBF adaptation effect in such a way that the CMRO2 effect manages to compensate the CBF effect on the BOLD signal, that do not present the strong adaptation effect.
+
+% % ![Moradi et al report of signals adaptation](images/moradi_adaptation_signals.png)
+
+% It is interesting to appreciate the complexity of the interaction of the CMRO2 and CBF signal at long stimuli durations as shown by \citep{moradi_adaptation_2013}, but more important is to notice that the BOLD signal failed to show a strong adaptation effect. This could be explained by the experimental manipulations of \citep{soltysik_comparison_2004}, where different primary sensory areas show different BOLD nonlinear-linear transition thresholds as a function of stimuli duration. The results of \citep{soltysik_comparison_2004} also emphasize a spatial heterogeneity of nonlinear responses across the brain and are supported by previous research conducted by \citep{birn_spatial_2001}. 
+
+% More recently \citep{devonshire_neurovascular_2012} shows with more detail how the coupling between neuronal activity (MUA and LFP) and hemodynamic response (BOLD) changes with brain region on the rat. He reconfirms a linear mapping of MUA activity and BOLD signal in regions inside and outside of the cortex for electrical stimulation of the entire whisker pad on the left of the rat's snout during 40s with different pulse frequencies. Nonetheless the mapping have a different slope in different brain regions and in the case of LFP there is a nonlinear mapping to BOLD responses outside of the cortex (in the brainstem).
+
+% % ![Neurovascular coupling shown by Devonshire](images/devonshire_neurovascular_coupling.png)
+
+% \citep{devonshire_neurovascular_2012} summarizes nicely the vision presented in the literature on the topic of neurovascular coupling. I quote:
+% >Early studies suggested that the BOLD signal could be predicted by
+% convolving neural activity with a linear time-invariant system (Ances
+% et al., 2000; Boynton et al., 1996; Dale and Buckner, 1997). However,
+% not all studies have found linear relationships between direct neural
+% recordings and haemodynamic or metabolic responses (Devor et al.,
+% 2003; Hewson-Stoate et al., 2005; Hoffmeyer et al., 2007; Jones
+% et al., 2004; Sheth et al., 2004). Such relationships have been the
+% focus of much research over the past fifteen years and a consensus
+% is now emerging that, at least in the cortex, a linear relationship char-
+% acterises response dynamics (Arthurs and Boniface, 2003; Arthurs
+% et al., 2000; Brinker et al., 1999; Heeger et al., 2000; Lauritzen,
+% 2001; Martindale et al., 2003; Nangini et al., 2008; Ngai et al., 1999;
+% Ou et al., 2009; Rees et al., 2000; Sheth et al., 2003; Smith et al.,
+% 2002; Ureshi et al., 2004). Note, however, that important exceptions
+% exist in the literature but these are most often found only under spe-
+% cific experimental conditions: non-linear relationships are often
+% found when sensory stimuli used are of a short-duration, in which a
+% CBF overshoot is disproportionately high compared to long-duration
+% stimuli (Ances et al., 2000; Soltysik et al., 2004; Vazquez and Noll,
+% 1998) (but see (Yesilyurt et al., 2008)) or are of a low-intensity that
+% do not cross a required neural threshold to evoke a haemodynamic re-
+% sponse (Vazquez and Noll, 1998). In accordance with these findings,
+% we show that neurovascular coupling in the cortex obeys a linear rela-
+% tionship when neural activity is triggered by long-duration sensory
+% stimuli and modulated by altering stimulation frequency, as opposed
+% to intensity. We also find BOLD responses to be equally well pre-
+% dicted by MUA as by LFP responses in the cortex, as the absolute
+% integral of both electrophysiological measures undergo similar,
+% monotonic rises with increasing stimulation frequencies. Note that
+% the cortical MUA data exhibits a negative BOLD (y axis) intercept
+% suggesting that a minimum threshold of spiking is required before
+% a BOLD response is triggered. Excluding the LFP-BOLD relationship
+% in the thalamus (discussed below), no other structure or modality
+% exhibits a non-zero y-intercept. This suggests that, under the experi-
+% mental conditions used in the current study, neural activity in the
+% cortex below a certain threshold would not be detected (c.f. (Zhang
+% et al., 2008)).
+% The close relationship between cortical MUA and LFPs, highlighted
+% above, is often reported in the literature (Jones et al., 2004) as is the
+% close relationship between these measures and cortical BOLD signals
+% (Hewson-Stoate et al., 2005; Jones et al., 2004), but there are excep-
+% tions (Logothetis et al., 2001). Poor correlations between spiking
+% and synaptic activity can arise for a number of reasons (see below),
+% but in the cortex a major factor is state-dependent adaptation (Kim
+% et al., 2010). As firing thresholds are known to alter according to
+% arousal state (McCormick and Bal, 1997), this provides a further
+% layer of complexity to neurovascular coupling and is an issue being
+% actively investigated (Jones et al., 2008; Masamoto et al., 2009).
+
+% Even though the linear mapping from neural activity to hemodynamics seem to hold only at long stimuli durations, \citep{tang_nonlinear_2009} shows that by taking into account and adapting current neurovascular models (the Balloon model) it is possible to relate CBV responses (from spectroscopy), that are reported to follow closely neural activity, to BOLD for lower stimuli durations (1,2,3,4,6 and 8s).
+
+% % ![Tang et al CBV-BOLD coupling](images/tang_cbv_bold_coupling.png)
+
+%  Interpretation for new experimental designs.
+
+% All the presented results suggest that for short duration stimuli it is important to account for the BOLD nonlinearities due to the CBF and CMRO2 (OEF)contributions in order to be able to relate the signal with neural activation. Moreover it is important to account for this effect across the whole brain, since different brain regions will present different neurovascular couplings and heterogenous nonlinearities. Without accounting for this it would not be possible to model linear differences in neural activations between stimuli, since this differences will be deformed by the nonlinear response of the OEF that masks the CBV contribution to the BOLD. Moreover we have to be very careful of temporal interactions between stimuli. The ISI is a crucial factor to tune to avoid additional nonlinearities on the BOLD that would distort our interpretation of the underlying neural activity.
+
+%  final remarks on the neural interpretation of the BOLD signal.
+
+% General remarks:
+% - We can think of the BOLD signal in terms of neural activation but with great caution. The mean spiking rate (MUA considerations) might not always be the best depiction of the underlying neural activity, but is shown to have a linear mapping to hemodynamics in many circumstances.
+% - The BOLD signal have a clear spatial correspondence with neural activity, but we can not interpret neural population activation levels directly between regions.
+% - We have to be careful in case of comparing stimuli with different durations. Have to be very careful on the ISI when dealing with short stimulations.
+% - Having access to CBV and CBF signals would greatly enhance our neural activation interpretation of the BOLD signal.
+
+% Experiment related remarks:
+% - Seems like we need longer stimulation to relate BOLD to neural activations. Moreover how long depends on the brain region that we want to consider.
+% - If we consider short duration stimuli then it would be important to have some way to assess the nonlinear neurovascular coupling.
+% - We should think carefully about the inclusion of empty trials in the experimental design. It made a great difference in the fit of neural activations to the hemodynamic response.
 
 
 
